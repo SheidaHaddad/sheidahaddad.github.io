@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheida Haddad – Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111;
+    --gray: #888;
+    --light: #f5f5f5;
+    --white: #fff;
+    --font: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--black);
+    background: var(--white);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #eee;
+  }
+  nav .logo {
+    font-size: 16px; font-weight: 600; letter-spacing: 0.02em;
+    text-decoration: none; color: var(--black);
+  }
+  nav ul {
+    list-style: none; display: flex; gap: 32px;
+  }
+  nav ul a {
+    text-decoration: none; color: var(--gray); font-size: 13px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--black); }
+
+  /* SECTIONS */
+  section { padding: 100px 40px 60px; }
+  section:first-of-type { padding-top: 120px; }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 40px;
+  }
+  .hero-inner {
+    max-width: 600px;
+  }
+  .hero-inner h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero-roles {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 28px;
+  }
+  .hero-roles span {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border: 1px solid #ddd; border-radius: 20px;
+    color: var(--gray);
+  }
+  .hero-tagline {
+    font-size: 15px; color: var(--gray); margin-bottom: 20px;
+    font-style: italic;
+  }
+  .hero-bio {
+    font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 32px;
+  }
+  .hero-links {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .hero-links a {
+    display: inline-flex; align-items: center; gap: 6px;
+    text-decoration: none; font-size: 13px; color: var(--black);
+    border-bottom: 1px solid var(--black); padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .hero-links a:hover { opacity: 0.5; }
+  .cta-btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 12px 28px;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.7; }
+
+  /* PORTFOLIO GRID */
+  #portfolio { background: var(--light); }
+  #portfolio h2 {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 40px;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+  .portfolio-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    aspect-ratio: 4/3;
+    text-decoration: none; display: block;
+  }
+  .portfolio-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .portfolio-card:hover img { transform: scale(1.04); }
+  .portfolio-card .card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 20px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: #fff;
+  }
+  .portfolio-card .card-label h3 {
+    font-size: 18px; font-weight: 400; margin-bottom: 2px;
+  }
+  .portfolio-card .card-label span {
+    font-size: 11px; opacity: 0.7; letter-spacing: 0.1em;
+  }
+
+  /* GALLERY SECTIONS */
+  .gallery-section { border-top: 1px solid #eee; }
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .section-header h2 {
+    font-size: clamp(24px, 3vw, 36px); font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  .section-header .year {
+    font-size: 12px; color: var(--gray); letter-spacing: 0.1em;
+  }
+
+  /* MASONRY */
+  .masonry {
+    columns: 3;
+    column-gap: 4px;
+  }
+  @media (max-width: 900px) { .masonry { columns: 2; } }
+  @media (max-width: 500px) { .masonry { columns: 1; } }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 4px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .masonry-item img {
+    width: 100%; display: block;
+    transition: transform 0.5s ease;
+  }
+  .masonry-item:hover img { transform: scale(1.03); }
+  .masonry-item .caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 30px 14px 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.65));
+    color: #fff; font-size: 11px; line-height: 1.4;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .masonry-item:hover .caption { opacity: 1; transform: translateY(0); }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.93);
+    align-items: center; justify-content: center;
+    flex-direction: column;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh; object-fit: contain;
+  }
+  .lightbox .lb-caption {
+    color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 14px;
+    max-width: 600px; text-align: center;
+  }
+  .lightbox .lb-close {
+    position: absolute; top: 20px; right: 28px;
+    color: #fff; font-size: 28px; cursor: pointer; background: none;
+    border: none; line-height: 1;
+  }
+  .lightbox .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    color: #fff; font-size: 36px; cursor: pointer; background: none;
+    border: none; padding: 10px 20px; opacity: 0.6; transition: opacity 0.2s;
+  }
+  .lightbox .lb-nav:hover { opacity: 1; }
+  .lightbox .lb-prev { left: 10px; }
+  .lightbox .lb-next { right: 10px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 40px;
+    border-top: 1px solid #eee;
+    font-size: 12px; color: var(--gray);
+  }
+  footer a { color: var(--gray); }
+
+  @media (max-width: 600px) {
+    nav { padding: 14px 20px; }
+    section { padding: 80px 20px 40px; }
+    #home { padding: 80px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">Sheida Haddad</a>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-inner">
+    <h1>Sheida Haddad</h1>
+    <div class="hero-roles">
+      <span>Graphic Design</span>
+      <span>Branding / Identity</span>
+      <span>Literature / Packaging</span>
+      <span>Web / Exhibition</span>
+    </div>
+    <p class="hero-tagline">✨ Design with clarity. Creativity with purpose.</p>
+    <p class="hero-bio">
+      Art direction and design that transform brands into experiences.<br><br>
+      I bring creativity, innovation, and precision to every project — from high-end branding and packaging to digital storytelling and large-scale campaigns. With 15+ years of experience, I create design solutions that don't just look beautiful, but feel timeless.
+    </p>
+    <div class="hero-links">
+      <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
+      <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
+      <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a>
+    </div>
+    <a href="#portfolio" class="cta-btn">View Portfolio</a>
+  </div>
+</section>
+
+<!-- PORTFOLIO INDEX -->
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <div class="portfolio-grid">
+    <a href="#branding" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/b7ab9c97-2486-4c84-8f56-624ae760079a_car_4x3.png?h=4321dca7c58b9b766872feadef836724" alt="Branding">
+      <div class="card-label"><h3>Branding</h3><span>2025</span></div>
+    </a>
+    <a href="#advertising" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/68d2e6d9-fe71-46d1-ae45-173f7facc431_car_4x3.png?h=c2dd8eca506660b28831972234f346e4" alt="Advertising">
+      <div class="card-label"><h3>Advertising</h3><span>2025</span></div>
+    </a>
+    <a href="#website-ui" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/13d73a7c-d735-497d-ab44-f0a7b7e7df0e_rwc_0x15x1101x825x1101.png?h=c0199722451f6a69e263819fd5d8b70e" alt="Website-UI">
+      <div class="card-label"><h3>Website – UI</h3><span>2025</span></div>
+    </a>
+    <a href="#btl" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/43e077c5-2c96-4b1d-99b0-18f9d4db6bc6_car_4x3.jpg?h=9de89cc8bab1b92a546ace3e102f1718" alt="BTL">
+      <div class="card-label"><h3>BTL</h3><span>2025</span></div>
+    </a>
+    <a href="#social-media" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/6231f0e7-b11e-44c0-86fa-bdf84e0bd7a4_carw_4x3x640.jpg?h=87149c996afcf54d97d93b60c7128c69" alt="Social Media">
+      <div class="card-label"><h3>Social Media</h3><span>2025</span></div>
+    </a>
+    <a href="#environmental-design" class="portfolio-card">
+      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/537b6318-7150-4107-8f6b-4ee5e5487a3e_carw_4x3x640.png?h=ff8da8ea13c13955942b2ff08b77bb40" alt="Environmental Design">
+      <div class="card-label"><h3>Environmental Design</h3><span>2025</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- BRANDING -->
+<section id="branding" class="gallery-section">
+  <div class="section-header">
+    <h2>Branding</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-branding"></div>
+</section>
+
+<!-- ADVERTISING -->
+<section id="advertising" class="gallery-section">
+  <div class="section-header">
+    <h2>Advertising</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-advertising"></div>
+</section>
+
+<!-- WEBSITE-UI -->
+<section id="website-ui" class="gallery-section">
+  <div class="section-header">
+    <h2>Website – UI</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-website-ui"></div>
+</section>
+
+<!-- BTL -->
+<section id="btl" class="gallery-section">
+  <div class="section-header">
+    <h2>BTL</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-btl"></div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="social-media" class="gallery-section">
+  <div class="section-header">
+    <h2>Social Media</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-social-media"></div>
+</section>
+
+<!-- ENVIRONMENTAL DESIGN -->
+<section id="environmental-design" class="gallery-section">
+  <div class="section-header">
+    <h2>Environmental Design</h2>
+    <span class="year">2025</span>
+  </div>
+  <div class="masonry" id="gallery-environmental-design"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Sheida Haddad &nbsp;·&nbsp; <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a> &nbsp;·&nbsp; <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a></p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">×</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <p class="lb-caption" id="lb-caption"></p>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">&#8250;</button>
+</div>
+
+<script>
+const CDN = 'https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/';
+
+const galleries = {
+  branding: [
+    { src: '1984a746-546c-42be-947e-6c1ac294c0c9_rw_1920.png?h=d4d67f7871b0e2ac1b773ba96ba10aa9' },
+    { src: '3b7c0664-6d3a-4ee1-b727-78652e3ef3d1_rw_1920.png?h=9f22fee4f07e81a1b4ce5ebb220aca40' },
+    { src: '1b49904c-fb42-4801-9a6d-1569dfb73427_rw_1920.png?h=461815f3ec835f3ab4e4a5f7aaa65c5e' },
+    { src: '47a66bf5-11b4-4d17-b8b3-3f61b005137c_rw_1920.jpg?h=543648de6ae9edf139bc810a01253168' },
+    { src: '614e7acb-9b44-467a-bc70-8cc51ccddc4e_rw_1200.png?h=c042d3168f2c100ec1ea00afba7a19d6' },
+    { src: 'ff723299-5dbf-417f-8b4d-bf696c980feb_rw_1200.png?h=e335df697e9f6464d00751057237b27a' },
+    { src: '72c48de6-1fe0-47da-a1fd-c8b22012a3ee_rw_1200.png?h=b4f92295a1c5eec6cff06f9b1fbb3296' },
+    { src: '2fb1822a-f9e1-496f-95b3-31a97ff64234_rw_1200.png?h=73142e777397c0d9eb854a3f10468620' },
+    { src: '6156d04b-d754-4e47-b037-adb54c262ced_rw_1200.png?h=5aba0ed8b07223cdf49aa62834fb4a93' },
+    { src: 'd592706b-387b-44db-93c0-71cb976104ba_rw_1200.png?h=671928291dfbd65898c054ec1fc0878c' },
+    { src: '418f38b7-3c03-4477-b70c-b91ca27a0192_rw_1200.png?h=79a4e7d192c829959f3aa5b946bfa436' },
+    { src: '8c8ef008-bca2-4e7d-8c6f-351e3d64d41b_rw_1920.png?h=3d14b815982443c452536cfc2d1e4862' },
+    { src: '33292200-99e1-4651-8a69-0b471564066f_rw_1920.png?h=19af440950a472e0290824d8241d4751' },
+    { src: 'ce99f098-4c6b-43a6-8710-c5e6985acf76_rw_1920.png?h=574adba27fb68e77960cc33de00b95c7' },
+    { src: 'f2d11aa4-9c3a-4d30-a40b-c3e27cf2b5c8_rw_1200.png?h=e12a214800a9117fbc7419a4d357df7f' },
+    { src: 'd7d98e4f-6343-43cc-9032-e2b5490adcff_rw_1200.png?h=677cfb24b0ec08ea91bc14dd3904e31a' },
+    { src: '28cae1c6-3066-4e21-840b-6a70f1b6d561_rw_1200.png?h=636ff4a024466cec91f324aff9581d68' },
+    { src: 'e4b67cb2-0a7e-4968-b9dc-391d26f429a3_rw_1200.png?h=738059ca4fe0204ccb454c93b2c0ebc3' },
+    { src: '69aa7093-a376-48ef-bcf1-74f244bc309c_rw_1200.png?h=237c1b9480e57e60ab8e4ebefe004459' },
+    { src: '12f2f783-d45f-419f-a389-30956cbe41b3_rw_1200.png?h=29832fc65c7e7c34ed1b2406b962d8bb' },
+    { src: '502ca668-f271-4efa-a391-9a46f8cb27a4_rw_1200.png?h=da7687f48fbd7baa3c5f27ae7a561902' },
+    { src: 'bbb66a60-cd1a-45a0-9cd3-746f1c1a906e_rw_1200.png?h=48668f690f7d1d59e7106462692927d7' },
+    { src: '05735d24-0c15-4cf1-a577-e852953b4253_rw_1200.png?h=8d4381d31e278926b34c86392744c2f5' },
+    { src: '658c8845-8764-447e-ada5-7ece63a74484_rw_1200.png?h=4684301bb37d8ca277b4f4d688470019' },
+    { src: 'bb91ecc2-2aaa-40e2-be36-de371a1d3103_rw_1200.png?h=8f952525893168e4b9bcdc6b1f5366ee' },
+    { src: 'bab7a8f8-efd2-4b5d-8862-2bd816e29079_rw_1200.png?h=2b73eed641bfc6eeeabe5594a008dc4b' },
+    { src: 'd624091d-92eb-4605-986c-2f629aa5a8d1_rw_1200.png?h=6de73842ae0bedd60f9bcdeec855e8c1' },
+    { src: '7471f36e-2b13-4348-aa4b-f2059965c32a_rw_1200.png?h=3d606ae4bc585531009e1ce768f054b7' },
+    { src: 'dd28b123-e708-47c7-99a7-4fe333f790b8_rw_1200.png?h=ab0f54e9a13d2ef12c038b8aa342a59e' },
+    { src: '87287653-84e2-477e-94ff-15aa87260810_rw_1200.png?h=007566d967c49866f076698049f5dc8a' },
+    { src: '8fb219ce-a8d9-45a9-9fff-05e6592b3617_rw_1200.png?h=11609b3ba9f0df1e508c2eb96eddc51d' },
+    { src: 'cab03346-8b55-4916-8dbf-9c4d151b6283_rw_1200.png?h=e3bda85e77995629a7ec66a3e5541cc9' },
+    { src: 'e7b64340-c05d-4ef6-926c-c54f25c525a8_rw_1200.png?h=7dc669713279792a0f54efae144c1352' },
+    { src: '908235cd-0b79-4047-92dd-e134bddc77b1_rw_1200.png?h=64cdd03dbe0785ce9cd4306e6c956bf3' },
+    { src: '12be510f-5092-4a1e-a612-d814640f36f4_rw_1200.png?h=7a8939b504fa9929aef2b73419ac8d09' },
+    { src: '58a00694-11d5-4043-904d-085d57cf6716_rw_1200.png?h=0f16505fb04e038aef547e52b34bf774' },
+    { src: 'c245fbd3-d19a-4ff1-b816-9105439cb9aa_rw_1200.png?h=ab3517fec387eeee537dea78e34b83b5' },
+    { src: '668087e3-3d2f-4074-a4df-68124884b05f_rw_1200.png?h=7a9cfa49890488a3b20d2abd65763457' },
+    { src: '5745bac9-9c02-4821-a43e-37f093e4797f_rw_1200.png?h=41c569d719b9dd5f1e6853894d0df91e' },
+    { src: '38867176-8063-40a7-a093-4704f3b463b8_rw_1200.png?h=142707b232ce6e07fb8c514248211c4b' },
+    { src: '12ca82f1-ff46-4638-8bef-38e509bb48db_rw_1200.png?h=c7a98def306736c8c423ea6469725940' },
+    { src: '5eb49ba6-c94b-4cb6-8c9b-20c58ed3441b_rw_1200.png?h=50897a6dd0b743b700033c96a4aa0841' },
+    { src: 'a990d2ff-6009-45c2-8ceb-6ac7211cad40_rw_1200.png?h=52310f24b351897f3a32cfaae8e85d25' },
+    { src: '036668a1-e4cc-44e1-a9bb-3f67d44184e6_rw_1920.jpg?h=da135283445550a021751f01c759c9e8' },
+    { src: '00278613-27b5-4e5c-b1d2-c41ac464f47a_rw_1920.jpg?h=4418d63b0874e313fff44379c7b16aee' },
+    { src: 'ef9e6325-4f7c-4f29-ac28-f0242009dae2_rw_1920.jpg?h=cfe61530891caa4533210dbd54abe53f' },
+    { src: 'a99406c8-3974-4c8e-9b6c-14b8559af12c_rw_1920.jpg?h=3411c724b28367049970e6386bd30e71' },
+    { src: '82131783-e455-47c8-8c76-d2c4c29c28c7_rw_1920.jpg?h=035ec6b281cafa964466df9634e3cd77' },
+    { src: '1f68c6fb-2ae4-41f6-9ae6-9773423f0328_rw_1920.jpg?h=878e422e40dbf5217a961b37e331e780' },
+    { src: 'c8bb13e8-17bb-4905-a6bd-d83971d94d07_rw_1200.jpg?h=b4430ee33cbe10827de05fd0db432b02' },
+    { src: '22350537-6ede-4976-bff7-82672f0d4824_rw_1200.jpg?h=255b348b596f74f83cdd1f89ce41048b' },
+    { src: 'cc3b4e75-d035-448c-be9b-f74c38367b95_rw_1200.jpg?h=69b155f5a506cb45e829e157805efe56' },
+    { src: '829f9525-eaa2-405c-9cbb-3fca48553c20_rw_1200.jpg?h=081221d7e9bf6bbce87ebcedce23a034' },
+    { src: 'ca4e6fcf-537a-441a-8f41-afcc50538a61_rw_1200.png?h=16c8daf7fda4297775ad4abc4876934a' },
+    { src: '606b918a-87b8-460d-bdf9-d8f9c9fd7603_rw_1200.png?h=5d52dd7cb0bc52193652bce39f5897b1' },
+    { src: '6c443b1d-4f9f-4975-bd34-2253abf2ed6f_rw_1200.png?h=d140e61d960bb2a00101bf5c682666ba' },
+    { src: '2984b5e1-647e-48db-8cf9-95978cdd3c97_rw_1200.png?h=9d0d586e3ee1881cd7cbe60180cfe75d' },
+    { src: 'a8e1d02d-b142-4009-a10e-f77da4798fcd_rw_1200.png?h=4ea5a5cf7e9dd1048cc4425c2b49026b' },
+    { src: '56523ce8-0da1-4866-ba4c-1081cdcc58a2_rw_1200.png?h=3b5407a2dfabec8eecdf8bad36ec8b62' },
+    { src: 'd849faaf-3fd2-47c0-b764-20fb208d1634_rw_1200.png?h=97e0562de74d7cbffc3876eeb1dc5eba' },
+    { src: 'ba3091e9-70f1-4222-8bd9-347436ce4346_rw_1200.png?h=e0f8d70adb136ab7b7c7c4e6d90a17d4' },
+    { src: 'ee11ae34-5425-4811-a37c-f4d423e98daa_rw_1200.png?h=c59c1a915c0f4c74fc5533e4b43c58f3' },
+    { src: 'c2d9a990-2b76-4654-a9a8-59bef66727ef_rw_1200.jpg?h=2acb43cc1a42acec2dad4f84f968051e' },
+    { src: '4bdc0c01-4593-4ee5-8cb1-926ccb5a2c30_rw_1200.jpg?h=edca2ed2d637e0fe2e7cc797e6c264e3' },
+    { src: '486ae547-9b57-40f4-b1bd-b4b9bfb6591e_rw_1200.jpg?h=f28c2ee36141dbcfcea4a26082c83cf2' },
+    { src: 'b14d797c-f10f-47dd-a69c-0391595591aa_rw_1200.jpg?h=16aac7f027a690d6059c87a7b82c44cc' },
+    { src: 'a96eafb5-42cc-479b-9e83-93217b204f64_rw_1200.jpg?h=de5f21d716ed2697fad048e63c3689e6' },
+  ],
+  advertising: [
+    { src: 'eac87ac9-b48a-4616-8309-529694a62ca0_rw_1920.jpg?h=b818e1c50953588e3252e81002ce6b1d', caption: "Peugeot: It's time to drive now!" },
+    { src: 'bbcb592f-1279-4159-aa2a-8ff321646a6e_rw_1920.jpg?h=88435c26d42d1f6e67fb5002188870b0', caption: 'Honda (Golrang Motor): Pure sense of brilliance with Honda' },
+    { src: 'f51a2f05-278d-4f1f-a3bf-79c81684dbc3_rw_1920.jpg?h=2bd1b88209c800f1269e67cd81b80ad9', caption: 'TCL Smart TV: Spectacular joy!' },
+    { src: '67ac6dc1-5f7b-4287-bc2f-27b056f9a647_rw_3840.jpg?h=12741391b02323cdabc3dac43394a8ed', caption: 'Samsung: Football field surrounded by you!' },
+    { src: '5bc8e06b-23df-4735-af15-f3e1a918256d_rw_1920.jpg?h=9ed56d5d10c86be7c328f3ff7bfc6616', caption: 'Samsung: Football field surrounded by you!' },
+    { src: '5ff53f3f-16dc-47f7-a530-b7c23a8bd260_rw_1920.jpg?h=72d0d1ef47bf5b259df54bcdf8553709', caption: 'Behrouz pickled Jalapeno: Jalapeno pepper just burns!' },
+    { src: 'b188c74b-dfbe-43f3-9cd9-1c29e1160098_rw_1920.jpg?h=b21551248f5c235be23c2ca5ce70b630', caption: 'Persil: It washes, it takes the stains away!' },
+    { src: '67aa8cc5-47e3-4e71-9130-5215133a2acf_rw_1920.jpg?h=3f284253388083112fc6000babb6537a', caption: 'MCI: A special welcome! With special gifts by buying and activating Hamrahe Aval post-paid SIM cards' },
+    { src: 'abe97b55-cbfe-4e9a-b472-e26b8a1c1f13_rw_1920.jpg?h=e1a18ee239d34d07911a3740b7c4edba', caption: 'MCI: Take it from here! 20 allowances – Hamrahe Aval "50 Million Toman Winners" campaign' },
+    { src: '3c40ceca-cb36-427b-9ffa-1894a8daab73_rw_1920.jpg?h=9f8089d02309fc89a1477007843caa62', caption: 'MCI: Download whatever you need, even a Whale' },
+    { src: 'b6fd4c04-e61d-4935-8fa4-992ecf2a7803_rw_1920.jpg?h=e9af00d422aebf957fb2033153ee8787', caption: 'MCI: Arrange your desirable combination! Combined packages by your choice' },
+    { src: '97cb6a2d-cc31-41eb-b53a-90955308ea86_rw_1920.jpg?h=026c23f979dc051a687c0c79c0953c1a', caption: 'Daewoo: This is the smart rhythm of your life' },
+    { src: '29493518-70f4-4d36-94bd-ae3e7c51787b_rw_1920.jpg?h=80242ae2f031b132b8953ab10535d22c', caption: 'Multicoco: Bold and chocolate change!' },
+    { src: '99e6a73c-5e8c-4994-b1c0-fa1d09a821d3_rw_1920.jpg?h=d5684e572a43f48a94372e9ce73587b1', caption: 'Multicoco: Bold and chocolate change!' },
+    { src: '85678181-68a1-45a5-8205-515874f11e4f_rw_1920.jpg?h=4f9f226ca60b719b9dcc57d3b7bfb238', caption: 'Multicoco: Bold and chocolate change!' },
+    { src: '169398d1-6e72-4d07-aa6b-e466498075ef_rw_1920.jpg?h=1fd27ebeaec8442e3fe01d581b45d58b', caption: 'Castle: Add happiness to it! Sparkling lemonade drink' },
+    { src: '066bdc7c-e372-45a8-bedc-c625cf8c532f_rw_1920.jpg?h=830304beec862988d8750ffb7fbe6548', caption: 'Castle: Add happiness to it! Sparkling red grape drink' },
+    { src: '514bcd3e-4f3b-4f88-bb02-b342f32164d5_rw_1920.jpg?h=358736f657c215386d6793870ba68696', caption: 'Castle: Add happiness to it! Sparkling red apple drink' },
+    { src: 'd59d07d8-7d7f-47e3-98f5-fd2b9fc524ff_rw_1920.jpg?h=f397ee1c1a56ce1dcd166e6ab69c933d', caption: "Snowa Home Appliance: Count on Snowa's winter lottery" },
+    { src: '77137487-b0b0-4d89-969a-99b56e661bfc_rw_1920.jpg?h=5384accfea4af50d15afc3cc72c670af', caption: 'Mellat Bank: Move confidently!' },
+    { src: 'b2859d84-1559-44a7-b315-40f6bfb1d72d_rw_1920.jpg?h=25ec2f48cdd1431031ce55fb12fed4bc', caption: 'Kalleh Lucky U carbonated beverage: Happy everywhere, Fresh anytime!' },
+    { src: '7e76775b-e096-4470-a75f-e2eea29485f9_rw_1920.jpg?h=5f66b66b234732b524cfdf8059061ae3', caption: '' },
+    { src: 'da256559-db40-4dc3-aa26-b9c38b919c95_rw_1920.jpg?h=6eef63c56dcf03a522e11fed3c6d9051', caption: 'Mellat Bank: Win the big prize' },
+    { src: '0ac9fc9e-63ef-4563-89f5-ecfc4a52e504_rw_1920.jpg?h=8a832d692644c563ca172bac7f48fdf4', caption: 'Barez Tire: O Barez, spin!' },
+    { src: '4c2bdb1f-d61e-403d-8bf3-1ae7060bacbf_rw_1920.jpg?h=766a6beb7e612837eabda804b71f5f93', caption: 'Barez Tire: Be a fighter!' },
+    { src: '484ab82d-4a1e-4fc3-bf31-c723b8340dee_rw_1920.jpg?h=98496e1958f322caa8dba81f176e28a4', caption: 'Palroom Canned Food (Tizing): Open it with smile!' },
+    { src: 'a05f66b7-91ea-4385-bc3e-8cd1fdd2a5e6_rw_1920.jpg?h=6445ccdc4e01667db963fb4b4c2fb385', caption: 'Palroom Canned Food (Opening): Open it with smile!' },
+    { src: 'bafd59bc-6469-457d-8837-5fd0191845f6_rw_1920.jpg?h=22e9b9960ae9a68c458a93fe538e377e', caption: 'Rightel: Professional SIM card, affordable internet for all social classes' },
+    { src: '1b8993cf-0e9c-4a31-ac0c-dc4c5414db22_rw_1920.jpg?h=c6fba33a7dcee79a737e3cfb407776a6', caption: "Rightel: 1 month, 1 Gb free watching in Aparat, Filimo and Children Aparat" },
+    { src: '261a32af-0f73-41ea-9534-601136706399_rw_1920.jpg?h=d45558d015f3d313ee77fd88f4ee3615', caption: 'Shahr Bank: A multifunctional card! Shahr Bank citizenship card' },
+    { src: '7f7cbfee-150e-492d-a937-76ef158dcca7_rw_1920.jpg?h=8b950fb71dbef6c3e30050ed533749f3', caption: 'Mihan BiscuStar: A thrill of taste and life!' },
+    { src: '74d98141-c31b-4bf5-aafe-e9414c9ae1ce_rw_1920.jpg?h=eafb0075a42d32a728a909bd3eb7a435', caption: 'Delpazir Mayonnaise: The first producer of low-fat Mayonnaise fortified with vitamin D' },
+    { src: 'ff1359e9-b731-4bcc-8875-775dbd54526f_rw_1920.png?h=1e7be4461ad747577f8d33949fa86938', caption: 'JoJo non-alcoholic beer: A bit of health, A bit of joy!' },
+    { src: '2a6b3b68-eae9-48d9-8881-53e5eea8bc70_rw_1920.png?h=af63462bcc8a760dffb931d1a6ea5224', caption: 'JoJo non-alcoholic beer: A bit of health, A bit of joy!' },
+    { src: 'bebb8214-03dd-423b-8c2c-510b24e7f6a1_rw_1920.jpg?h=3aabd15794cd0cdc38553aacc182dda8', caption: 'Parsian Bank: Dedicated branch in your company' },
+    { src: '47a86be6-23a3-452a-8242-485d496cead8_rw_1920.jpg?h=a95dea13fa0a15eccd648bfb0f6ef4fb', caption: 'Sunnyness Juice' },
+  ],
+  'website-ui': [
+    { src: '46d96068-38e5-45b9-b36d-db3ae0e7eb11_rw_1200.png?h=82525da5484eb23c3a48b0fbd3a89e04' },
+    { src: '04a7694a-8ab1-4ab7-a83e-de898258a537_rw_1200.png?h=f258f50f0fb864bcb64ee03a4f4ffdee' },
+    { src: '1b3db91c-460e-41ac-abcf-c5763143d4c0_rw_1200.png?h=c9fcb0e0c7d8e9097b42c25997f9de27' },
+    { src: '08a649e9-5371-49af-9c82-2fe629e001ba_rw_1200.png?h=4e79c562cdc3e58bf0d4f434fafec4af' },
+    { src: '08ccadeb-f4d3-4d91-a7aa-120ee80a06a4_rw_1200.png?h=f24131a68b35119168531b9240dd4b2e' },
+    { src: 'ad694973-900f-40c4-a7ef-4218a079cd18_rw_1200.png?h=b9afd2999919e530252d20551ef46833' },
+    { src: 'b6394a6d-3dbb-46f4-9840-6a9f05c62ae6_rw_1920.jpg?h=46defcbb4419316174b781cabeb42d1b' },
+    { src: '24f3a84b-a1b1-46e9-b94a-a6337a061d4a_rw_3840.jpg?h=b1e3ad88c45bbde4b80db960e9b65a6b' },
+    { src: 'a5e30729-c688-472f-8573-fa4eaa3fe27c_rw_1920.jpg?h=8e363d2bab52cf135fe26a4ae4414116' },
+    { src: '7210de58-065e-4050-8f4b-a4b7ef89c96b_rw_3840.jpg?h=f78ddb6a484f092a6c3151d090fa17d2' },
+  ],
+  btl: [
+    { src: '4eefc29e-1661-4b7a-a654-e4e7b000526c_rw_1920.png?h=7dc955bda9d9357e72723588f6f0ba17' },
+    { src: '4320c481-4912-47d3-9ca7-a6aac6474a52_rw_1920.png?h=ff08da254158dd1c28d00c64bc081a1e' },
+    { src: '1d0e1858-9910-43cd-9698-bb17173f0808_rw_1920.png?h=8707f7144f38a64b11f3994e9a620490' },
+    { src: '9086c777-7495-4c81-aacc-d2079e656a97_rw_1920.png?h=270ce83922cb3c902316e9351a5d3a8e' },
+    { src: 'a316a2fb-96ef-44b0-83b3-5f915bcfa323_rw_1920.png?h=f5fba357f078a61e1de41f91809e7eed' },
+    { src: 'd0b4136b-e2d1-4371-a5cd-6f8f437771f2_rw_1920.png?h=cfb105bdbe0a7ce48c2f4fb1970be796' },
+    { src: 'e5c9cb71-b7f9-4e3c-8663-6e5573d18ea4_rw_1920.jpg?h=0d934b4f69a305e1014b4714f9827a3b' },
+    { src: '2d753e95-9457-4556-96c7-c612abd5bfc5_rw_1920.jpg?h=b8942387d156de6779120def6d5d28df' },
+    { src: '93c8cd62-c7d7-4e75-8b08-66d08ebc7ae5_rw_1920.jpg?h=53257b0f2f33837cbfd8cb3767be0594' },
+    { src: '6670866f-9ced-4da4-ae02-a7bd65726382_rw_1920.jpg?h=c3b19a1e2e9b596499b2a42a695fb68f' },
+    { src: 'a181ee0f-8dab-4183-a69d-824559ae5ac5_rw_1920.jpg?h=32a47cd75e2d50280733cdab0ef15be4' },
+    { src: '766e2231-d763-4311-8d51-758aed914705_rw_1200.jpg?h=d9716451f02947b58109a030c35b5970' },
+    { src: '794cc0c2-a716-4dd4-8656-18105a2e2658_rw_1200.jpg?h=236f43aac856f06317d85838ab960c79' },
+    { src: 'c8291501-5cb0-413c-984e-96d489754229_rw_1200.jpg?h=9400a9823227c863fc4a3f31ded0c5ff' },
+    { src: '306111b3-2fa4-4ee6-afcb-af2b2d4dccb5_rw_1200.jpg?h=8aa743d69d7661c34767bcc20955031d' },
+    { src: 'de5268c8-04fb-451f-bb67-5709bc6bb25d_rw_1200.jpg?h=a1cb5c7d13d26c8820613862f5ef20fa' },
+    { src: '67e89a78-debc-4241-a17d-56e408b45529_rw_1200.jpg?h=d9a20b8ff3389439eff7b1970df4253a' },
+    { src: '580d4b3a-20d2-4dc7-af74-f059fc37b601_rw_1920.png?h=eec87fb27e48b3af3c2fa568c61e0372' },
+    { src: 'f32452d8-1cd4-4292-b600-dd65d4d490a5_rw_1200.png?h=c673c7190575d1238f2fbedbe26b6ef2' },
+    { src: 'fda49d1a-7150-4ca2-90c7-2afbd39c0d44_rw_1920.png?h=a650a4613c848adb5a0f099f23ef3669' },
+    { src: '5f21db81-5a26-42ce-a6e3-e9c901101f81_rw_1200.png?h=a05cc2d904d10e50b99f1472ee3cc105' },
+    { src: 'fae68161-325e-4167-895a-a0f1e1d6e45f_rw_1920.png?h=113889fbeca7df2849c3ea8eaf685f64' },
+    { src: 'ecd11cb3-28d0-4bb5-a793-2e8d131d703b_rw_1200.png?h=49041d0afd0da539ba5630e419ab008a' },
+    { src: '3d9c7f79-aa07-49cd-8afa-31baec141576_rw_600.jpg?h=ce98b7ba4fef7fa0cd2ab59bb3623013' },
+    { src: 'a82a7a4d-fc93-41f8-8fd5-6de15f464fba_rw_600.jpg?h=9dfdd416e8780e650332a3a54c614680' },
+    { src: '76a1966f-226f-4ff9-b902-7bde7d576c9a_rw_1920.png?h=e73795ad432f7aaa4f4d46dcae2b73ec' },
+    { src: '93ca5802-2788-4ba3-95ae-fd32b2b34b85_rw_1920.png?h=233aecc790dc79aebd8a1e919c6f46bf' },
+    { src: '76d57124-b2f2-46e9-bea2-8147689418bd_rw_1920.png?h=c377d8843a1d85af03b338dab9cddf59' },
+    { src: 'f755b7bf-f4fd-4189-b4f9-6cf29e8a7ee0_rw_1920.jpg?h=5a819e71ccf4911783b257f56e74cce5' },
+    { src: '0045b7f0-67c7-4094-9829-98494d79b338_rw_1200.jpg?h=686995a1206fbb145d372ae6aca671ba' },
+    { src: '42e204e9-434a-4784-b9c5-2fc9c1089205_rw_1200.jpg?h=77e953f9cfafa03aafb3128417676e64' },
+  ],
+  'social-media': [
+    { src: 'a9eb8835-c042-47d8-8827-8721a4e4599b_rw_1200.jpg?h=476e9c83ffdbc591c8737453d9e5bd80' },
+    { src: 'f7f162de-f22e-476d-b01d-e0af0b682207_rw_1200.jpg?h=df8c335b782d49a8c41148ea59b42f39' },
+    { src: 'aa1a3477-252e-47ff-af6f-3721739d84b1_rw_1200.png?h=a4992a61d7d0ff4bfbefb3cfaf8cfbfb' },
+    { src: '6ddbf914-49b9-4af7-8c77-8fef26d7e479_rw_1200.jpg?h=ca1d7bc79fd95b8ed856ef746dd39e23' },
+    { src: '44cb02f1-9bd4-4dae-a03e-e9eb0a91b22a_rw_1200.jpg?h=a65c6adf02767949d4c7d31e7498e4a8' },
+    { src: '4cb3c3e1-f421-4c55-8190-135981df17ff_rw_1200.jpg?h=e95dce736d3bd0bc15129ccd2f38023a' },
+    { src: '7c0a5b4c-8fe0-4c0b-bd23-d49350078f20_rw_1200.jpg?h=59065f7fbe6202018db249dc99a3f236' },
+    { src: '21dfded3-866c-42d8-90c1-ae45fae62553_rw_1200.jpg?h=f91b48a44bc38c19bd320bfd69887f10' },
+    { src: '62ff38e6-3f4c-4944-bf08-15e40fe29837_rw_1200.jpg?h=5307451d48987687a4eb8c766e041984' },
+    { src: 'b5fe1a45-7ee9-4c11-ae6b-d6828b64f53e_rw_1200.jpg?h=f0552bcde51d3caf03622bb021baafaa' },
+    { src: '1668efcd-6a7a-49cd-8d5e-b8dd881c7a4a_rw_1920.jpg?h=f078fa303462840223028e249a659389' },
+    { src: 'cd90539a-c919-4ee1-925d-c87540257fef_rw_1920.jpg?h=dde8e7a5670c265bcd7bd4070732f348' },
+    { src: '2c03b750-d978-41c4-bc94-f09d0acfd8d9_rw_1920.jpg?h=2797c3ada954283c8f01ef9a439b6271' },
+    { src: '15b9a9ab-ce63-4c11-8b4f-148fe5735c5f_rw_1920.jpg?h=eeafeeb37087f5cfdc4f1ad5a4af52d9' },
+  ],
+  'environmental-design': [
+    { src: '73a7a30a-e767-41bf-8248-40e27860c718_rw_1200.png?h=e2d92a4b090ae73eb16e50c4c61cb680' },
+    { src: '65663bf6-9cd1-4c7f-8459-88749f31b038_rw_1200.png?h=8963a83f470b0985aa05d0d1dd26ab7a' },
+    { src: 'd6da0f66-04d8-4e3f-a27a-07e56260dcb1_rw_1200.png?h=92180eabb7790234759d3a2c93f291b0' },
+    { src: '142494ca-a4ad-4f58-87e3-ddb6329dfc66_rw_1200.png?h=a45d028bfa48a3bd31ed2130874f8b09' },
+    { src: 'af2a51ab-e422-4d30-bbd8-e445f5ec4c9e_rw_1200.png?h=9dbec2f4e6617d849ef3a1b3b7b57c84' },
+    { src: 'f0e13602-0d08-4832-be70-e76e29d9c217_rw_1920.jpg?h=28cb5cd364257e042a158a12ff52f4cd' },
+    { src: 'e5328877-792b-4e8a-a450-2983ce1b0eae_rw_1920.jpg?h=8edfb35f357f1be99bf59b8eb37d36d8' },
+  ]
+};
+
+// Build galleries
+function buildGallery(id, items) {
+  const container = document.getElementById('gallery-' + id);
+  if (!container) return;
+  const allImgs = [];
+  items.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'masonry-item';
+    const url = CDN + item.src;
+    allImgs.push({ src: url, caption: item.caption || '' });
+    div.innerHTML = `<img src="${url}" alt="${item.caption || ''}" loading="lazy">
+      ${item.caption ? `<div class="caption">${item.caption}</div>` : ''}`;
+    div.addEventListener('click', () => openLightbox(allImgs, i));
+    container.appendChild(div);
+  });
+}
+
+Object.entries(galleries).forEach(([id, items]) => buildGallery(id, items));
+
+// Lightbox
+let lbImages = [], lbIndex = 0;
+
+function openLightbox(images, index) {
+  lbImages = images;
+  lbIndex = index;
+  showLbImage();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLbImage() {
+  document.getElementById('lb-img').src = lbImages[lbIndex].src;
+  document.getElementById('lb-caption').textContent = lbImages[lbIndex].caption || '';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  showLbImage();
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft') lbNav(-1);
+});
+</script>
+</body>
+</html>
