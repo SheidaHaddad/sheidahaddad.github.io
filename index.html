@@ -29,129 +29,141 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 40px;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #eee;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   nav .logo {
     font-size: 16px; font-weight: 600; letter-spacing: 0.02em;
-    text-decoration: none; color: var(--black);
+    text-decoration: none; color: #fff;
   }
   nav ul { list-style: none; display: flex; gap: 32px; }
   nav ul a {
-    text-decoration: none; color: var(--gray); font-size: 13px;
+    text-decoration: none; color: rgba(255,255,255,0.4); font-size: 13px;
     letter-spacing: 0.05em; text-transform: uppercase;
     transition: color 0.2s;
   }
-  nav ul a:hover { color: var(--black); }
+  nav ul a:hover { color: #fff; }
 
   /* HERO */
   #home {
-    position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    overflow: hidden;
+    background: #0a0a0a;
   }
 
-  /* Background slideshow */
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  .hero-bg-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.8s ease-in-out;
-  }
-  .hero-bg-slide.active { opacity: 1; }
-
-  /* Left frosted panel */
-  .hero-panel {
-    position: relative;
-    z-index: 2;
-    width: 52%;
+  /* LEFT PANEL */
+  .hero-left {
+    width: 46%;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 100px 60px 60px 60px;
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px 52px 60px 52px;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    flex-shrink: 0;
   }
-  @media (max-width: 800px) {
-    .hero-panel {
-      width: 100%;
-      background: rgba(255,255,255,0.93);
-      padding: 100px 24px 60px;
-    }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 20px;
   }
-
-  .hero-inner { max-width: 480px; }
-  .hero-inner h1 {
-    font-size: clamp(34px, 4vw, 56px);
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 10px;
+  .hero-left h1 {
+    font-size: clamp(38px, 4vw, 60px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 20px;
   }
-
-  /* Typewriter */
-  .typewriter-wrap {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 28px;
-    min-height: 20px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .typewriter-text { color: var(--black); font-weight: 500; }
-  .typewriter-cursor {
-    display: inline-block;
-    width: 1px;
-    height: 14px;
-    background: var(--black);
-    animation: blink 0.8s step-end infinite;
-    vertical-align: middle;
-    margin-left: 1px;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  .hero-tagline {
-    font-size: 15px; color: var(--gray); margin-bottom: 20px;
-    font-style: italic;
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .hero-pill {
+    font-size: 10px; padding: 3px 12px;
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 20px; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
   .hero-bio {
-    font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 32px;
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    line-height: 1.8; margin-bottom: 32px; max-width: 380px;
   }
-  .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
   .hero-links a {
-    display: inline-flex; align-items: center; gap: 6px;
-    text-decoration: none; font-size: 13px; color: var(--black);
-    border-bottom: 1px solid var(--black); padding-bottom: 2px;
-    transition: opacity 0.2s;
+    text-decoration: none; font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    border-bottom: 0.5px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: color 0.2s, border-color 0.2s;
   }
-  .hero-links a:hover { opacity: 0.5; }
+  .hero-links a:hover { color: #fff; border-color: #fff; }
   .cta-btn {
     display: inline-block;
-    margin-top: 32px;
-    padding: 12px 28px;
-    background: var(--black);
-    color: var(--white);
+    padding: 13px 32px;
+    background: #fff;
+    color: #0a0a0a;
     text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.05em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: opacity 0.2s;
+    align-self: flex-start;
   }
-  .cta-btn:hover { opacity: 0.7; }
+  .cta-btn:hover { opacity: 0.8; }
+
+  /* RIGHT PANEL — animated slogan */
+  .hero-right {
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px 52px 60px 60px;
+    overflow: hidden;
+  }
+  .slogan-block { position: relative; }
+  .slogan-line {
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    height: clamp(56px, 7vw, 96px);
+    overflow: hidden;
+    position: relative;
+  }
+  .slogan-word {
+    display: block;
+    color: #ffffff;
+    transform: translateY(105%);
+    opacity: 0;
+    transition: transform 0.75s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease;
+  }
+  .slogan-word.visible { transform: translateY(0); opacity: 1; }
+  .slogan-word.exit { transform: translateY(-110%); opacity: 0; transition: transform 0.5s ease-in, opacity 0.4s ease; }
+
+  .slogan-suffix {
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: rgba(255,255,255,0.12);
+    margin-top: 4px;
+  }
+  .slogan-divider {
+    width: 40px; height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 28px 0;
+  }
+  .slogan-sub {
+    font-size: 11px; color: rgba(255,255,255,0.3);
+    letter-spacing: 0.16em; text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    #home { flex-direction: column; }
+    .hero-left { width: 100%; min-height: auto; padding: 100px 24px 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .hero-right { padding: 40px 24px 60px; min-height: 50vh; }
+    .slogan-suffix { color: rgba(255,255,255,0.1); }
+  }
 
   /* SECTIONS */
   section { padding: 100px 40px 60px; }
@@ -353,33 +365,41 @@
 
 <!-- HOME -->
 <section id="home">
-  <!-- Background slideshow -->
-  <div class="hero-bg" id="heroBg"></div>
 
-  <!-- Left content panel -->
-  <div class="hero-panel">
-    <div class="hero-inner">
-      <h1>Sheida Haddad</h1>
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">Toronto, Canada · Available for projects</div>
+    <h1>Sheida<br>Haddad</h1>
+    <div class="hero-pills">
+      <span class="hero-pill">Graphic Design</span>
+      <span class="hero-pill">Branding</span>
+      <span class="hero-pill">Art Direction</span>
+      <span class="hero-pill">Packaging</span>
+      <span class="hero-pill">Web · UI</span>
+    </div>
+    <p class="hero-bio">
+      15+ years transforming brands into timeless experiences — from high-end identity and packaging to digital campaigns and large-scale art direction.
+    </p>
+    <div class="hero-links">
+      <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
+      <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
+      <a href="mailto:Hadad.sheida@gmail.com">Email</a>
+    </div>
+    <a href="#portfolio" class="cta-btn">View Portfolio</a>
+  </div>
 
-      <div class="typewriter-wrap">
-        <span style="color:var(--gray);">—&nbsp;</span>
-        <span class="typewriter-text" id="typewriter"></span>
-        <span class="typewriter-cursor"></span>
+  <!-- RIGHT: animated slogan -->
+  <div class="hero-right">
+    <div class="slogan-block">
+      <div class="slogan-line">
+        <span class="slogan-word" id="sloganWord">Design</span>
       </div>
-
-      <p class="hero-tagline">Design with clarity. Creativity with purpose.</p>
-      <p class="hero-bio">
-        Art direction and design that transform brands into experiences.<br><br>
-        I bring creativity, innovation, and precision to every project — from high-end branding and packaging to digital storytelling and large-scale campaigns. With 15+ years of experience, I create design solutions that don't just look beautiful, but feel timeless.
-      </p>
-      <div class="hero-links">
-        <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
-        <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
-        <a href="mailto:Hadad.sheida@gmail.com">Email</a>
-      </div>
-      <a href="#portfolio" class="cta-btn">View Portfolio</a>
+      <div class="slogan-suffix" id="sloganSuffix">that speaks.</div>
+      <div class="slogan-divider"></div>
+      <div class="slogan-sub">Crafted with intention. Built to last.</div>
     </div>
   </div>
+
 </section>
 
 <!-- PORTFOLIO INDEX -->
@@ -510,71 +530,36 @@
 <script>
 const CDN = 'https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/';
 
-// ── HERO BACKGROUND SLIDESHOW ──────────────────────────────────────────────
-const heroImages = [
-  'b7ab9c97-2486-4c84-8f56-624ae760079a_car_4x3.png?h=4321dca7c58b9b766872feadef836724',
-  '68d2e6d9-fe71-46d1-ae45-173f7facc431_car_4x3.png?h=c2dd8eca506660b28831972234f346e4',
-  '13d73a7c-d735-497d-ab44-f0a7b7e7df0e_rwc_0x15x1101x825x1101.png?h=c0199722451f6a69e263819fd5d8b70e',
-  '43e077c5-2c96-4b1d-99b0-18f9d4db6bc6_car_4x3.jpg?h=9de89cc8bab1b92a546ace3e102f1718',
-  '6231f0e7-b11e-44c0-86fa-bdf84e0bd7a4_carw_4x3x640.jpg?h=87149c996afcf54d97d93b60c7128c69',
-  '537b6318-7150-4107-8f6b-4ee5e5487a3e_carw_4x3x640.png?h=ff8da8ea13c13955942b2ff08b77bb40',
-  'eac87ac9-b48a-4616-8309-529694a62ca0_rw_1920.jpg?h=b818e1c50953588e3252e81002ce6b1d',
-  'bbcb592f-1279-4159-aa2a-8ff321646a6e_rw_1920.jpg?h=88435c26d42d1f6e67fb5002188870b0',
-  '1984a746-546c-42be-947e-6c1ac294c0c9_rw_1920.png?h=d4d67f7871b0e2ac1b773ba96ba10aa9',
+// ── ANIMATED SLOGAN ────────────────────────────────────────────────────────
+const slogans = [
+  { word: 'Design',     suffix: 'that speaks.' },
+  { word: 'Brands',     suffix: 'that last.' },
+  { word: 'Ideas',      suffix: 'made visible.' },
+  { word: 'Vision',     suffix: 'without limits.' },
+  { word: 'Creativity', suffix: 'with purpose.' },
+  { word: 'Work',       suffix: 'that wins.' },
 ];
+let sIdx = 0;
+const sWord = document.getElementById('sloganWord');
+const sSuffix = document.getElementById('sloganSuffix');
 
-const heroBg = document.getElementById('heroBg');
-const slides = heroImages.map(src => {
-  const div = document.createElement('div');
-  div.className = 'hero-bg-slide';
-  div.style.backgroundImage = `url(${CDN}${src})`;
-  heroBg.appendChild(div);
-  return div;
-});
-
-let currentSlide = 0;
-slides[0].classList.add('active');
-setInterval(() => {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
-}, 4000);
-
-// ── TYPEWRITER ─────────────────────────────────────────────────────────────
-const words = [
-  'Graphic Design',
-  'Branding & Identity',
-  'Art Direction',
-  'Packaging Design',
-  'Web & UI',
-  'Environmental Design',
-  'Campaign Strategy',
-];
-let wIndex = 0, cIndex = 0, deleting = false;
-const twEl = document.getElementById('typewriter');
-
-function typeStep() {
-  const word = words[wIndex];
-  if (!deleting) {
-    twEl.textContent = word.slice(0, ++cIndex);
-    if (cIndex === word.length) {
-      deleting = true;
-      setTimeout(typeStep, 1800);
-      return;
-    }
-    setTimeout(typeStep, 75);
-  } else {
-    twEl.textContent = word.slice(0, --cIndex);
-    if (cIndex === 0) {
-      deleting = false;
-      wIndex = (wIndex + 1) % words.length;
-      setTimeout(typeStep, 400);
-      return;
-    }
-    setTimeout(typeStep, 40);
-  }
+function nextSlogan() {
+  sWord.classList.remove('visible');
+  sWord.classList.add('exit');
+  setTimeout(() => {
+    sIdx = (sIdx + 1) % slogans.length;
+    sWord.classList.remove('exit');
+    sWord.textContent = slogans[sIdx].word;
+    sSuffix.textContent = slogans[sIdx].suffix;
+    void sWord.offsetWidth;
+    sWord.classList.add('visible');
+  }, 550);
 }
-typeStep();
+
+setTimeout(() => {
+  sWord.classList.add('visible');
+  setInterval(nextSlogan, 3000);
+}, 200);
 
 // ── GALLERIES ──────────────────────────────────────────────────────────────
 const galleries = {
