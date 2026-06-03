@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --black: #111;
     --gray: #888;
@@ -16,9 +15,7 @@
     --white: #fff;
     --font: 'Inter', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--font);
     color: var(--black);
@@ -40,9 +37,7 @@
     font-size: 16px; font-weight: 600; letter-spacing: 0.02em;
     text-decoration: none; color: var(--black);
   }
-  nav ul {
-    list-style: none; display: flex; gap: 32px;
-  }
+  nav ul { list-style: none; display: flex; gap: 32px; }
   nav ul a {
     text-decoration: none; color: var(--gray); font-size: 13px;
     letter-spacing: 0.05em; text-transform: uppercase;
@@ -50,35 +45,85 @@
   }
   nav ul a:hover { color: var(--black); }
 
-  /* SECTIONS */
-  section { padding: 100px 40px 60px; }
-  section:first-of-type { padding-top: 120px; }
-
   /* HERO */
   #home {
+    position: relative;
     min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 80px 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
-  .hero-inner {
-    max-width: 600px;
+
+  /* Background slideshow */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
   }
+  .hero-bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out;
+  }
+  .hero-bg-slide.active { opacity: 1; }
+
+  /* Left frosted panel */
+  .hero-panel {
+    position: relative;
+    z-index: 2;
+    width: 52%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 60px 60px 60px;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  @media (max-width: 800px) {
+    .hero-panel {
+      width: 100%;
+      background: rgba(255,255,255,0.93);
+      padding: 100px 24px 60px;
+    }
+  }
+
+  .hero-inner { max-width: 480px; }
   .hero-inner h1 {
-    font-size: clamp(36px, 5vw, 60px);
+    font-size: clamp(34px, 4vw, 56px);
     font-weight: 300;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .hero-roles {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-bottom: 28px;
-  }
-  .hero-roles span {
-    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 12px; border: 1px solid #ddd; border-radius: 20px;
+
+  /* Typewriter */
+  .typewriter-wrap {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--gray);
+    margin-bottom: 28px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
+  .typewriter-text { color: var(--black); font-weight: 500; }
+  .typewriter-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: var(--black);
+    animation: blink 0.8s step-end infinite;
+    vertical-align: middle;
+    margin-left: 1px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
   .hero-tagline {
     font-size: 15px; color: var(--gray); margin-bottom: 20px;
     font-style: italic;
@@ -86,9 +131,7 @@
   .hero-bio {
     font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 32px;
   }
-  .hero-links {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
+  .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
   .hero-links a {
     display: inline-flex; align-items: center; gap: 6px;
     text-decoration: none; font-size: 13px; color: var(--black);
@@ -109,6 +152,9 @@
     transition: opacity 0.2s;
   }
   .cta-btn:hover { opacity: 0.7; }
+
+  /* SECTIONS */
+  section { padding: 100px 40px 60px; }
 
   /* PORTFOLIO GRID */
   #portfolio { background: var(--light); }
@@ -137,12 +183,8 @@
     background: linear-gradient(transparent, rgba(0,0,0,0.6));
     color: #fff;
   }
-  .portfolio-card .card-label h3 {
-    font-size: 18px; font-weight: 400; margin-bottom: 2px;
-  }
-  .portfolio-card .card-label span {
-    font-size: 11px; opacity: 0.7; letter-spacing: 0.1em;
-  }
+  .portfolio-card .card-label h3 { font-size: 18px; font-weight: 400; margin-bottom: 2px; }
+  .portfolio-card .card-label span { font-size: 11px; opacity: 0.7; letter-spacing: 0.1em; }
 
   /* GALLERY SECTIONS */
   .gallery-section { border-top: 1px solid #eee; }
@@ -154,28 +196,17 @@
     font-size: clamp(24px, 3vw, 36px); font-weight: 300;
     letter-spacing: -0.01em;
   }
-  .section-header .year {
-    font-size: 12px; color: var(--gray); letter-spacing: 0.1em;
-  }
+  .section-header .year { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; }
 
   /* MASONRY */
-  .masonry {
-    columns: 3;
-    column-gap: 4px;
-  }
+  .masonry { columns: 3; column-gap: 4px; }
   @media (max-width: 900px) { .masonry { columns: 2; } }
   @media (max-width: 500px) { .masonry { columns: 1; } }
   .masonry-item {
-    break-inside: avoid;
-    margin-bottom: 4px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+    break-inside: avoid; margin-bottom: 4px;
+    position: relative; overflow: hidden; cursor: pointer;
   }
-  .masonry-item img {
-    width: 100%; display: block;
-    transition: transform 0.5s ease;
-  }
+  .masonry-item img { width: 100%; display: block; transition: transform 0.5s ease; }
   .masonry-item:hover img { transform: scale(1.03); }
   .masonry-item .caption {
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -187,6 +218,86 @@
   }
   .masonry-item:hover .caption { opacity: 1; transform: translateY(0); }
 
+  /* CONTACT */
+  #contact {
+    background: var(--white);
+    border-top: 1px solid #eee;
+  }
+  #contact .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 960px;
+  }
+  @media (max-width: 720px) {
+    #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+  #contact h2 {
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  #contact .contact-sub {
+    font-size: 14px; color: var(--gray); margin-bottom: 36px;
+  }
+  .contact-info-item {
+    display: flex; flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .contact-info-item .label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 4px;
+  }
+  .contact-info-item a, .contact-info-item span {
+    font-size: 14px; color: var(--black); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .contact-info-item a:hover { opacity: 0.5; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--black);
+    background: transparent;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-bottom-color: var(--black); }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: #bbb; }
+  .contact-form textarea { min-height: 100px; }
+  .contact-form button {
+    align-self: flex-start;
+    padding: 12px 32px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    font-family: var(--font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .contact-form button:hover { opacity: 0.7; }
+  .form-success {
+    display: none;
+    font-size: 13px;
+    color: #444;
+    padding: 12px 0;
+    letter-spacing: 0.05em;
+  }
+
   /* LIGHTBOX */
   .lightbox {
     display: none; position: fixed; inset: 0; z-index: 200;
@@ -195,9 +306,7 @@
     flex-direction: column;
   }
   .lightbox.active { display: flex; }
-  .lightbox img {
-    max-width: 90vw; max-height: 85vh; object-fit: contain;
-  }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
   .lightbox .lb-caption {
     color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 14px;
     max-width: 600px; text-align: center;
@@ -227,7 +336,6 @@
   @media (max-width: 600px) {
     nav { padding: 14px 20px; }
     section { padding: 80px 20px 40px; }
-    #home { padding: 80px 20px; }
   }
 </style>
 </head>
@@ -239,30 +347,38 @@
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HOME -->
 <section id="home">
-  <div class="hero-inner">
-    <h1>Sheida Haddad</h1>
-    <div class="hero-roles">
-      <span>Graphic Design</span>
-      <span>Branding / Identity</span>
-      <span>Literature / Packaging</span>
-      <span>Web / Exhibition</span>
+  <!-- Background slideshow -->
+  <div class="hero-bg" id="heroBg"></div>
+
+  <!-- Left content panel -->
+  <div class="hero-panel">
+    <div class="hero-inner">
+      <h1>Sheida Haddad</h1>
+
+      <div class="typewriter-wrap">
+        <span style="color:var(--gray);">—&nbsp;</span>
+        <span class="typewriter-text" id="typewriter"></span>
+        <span class="typewriter-cursor"></span>
+      </div>
+
+      <p class="hero-tagline">Design with clarity. Creativity with purpose.</p>
+      <p class="hero-bio">
+        Art direction and design that transform brands into experiences.<br><br>
+        I bring creativity, innovation, and precision to every project — from high-end branding and packaging to digital storytelling and large-scale campaigns. With 15+ years of experience, I create design solutions that don't just look beautiful, but feel timeless.
+      </p>
+      <div class="hero-links">
+        <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
+        <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
+        <a href="mailto:Hadad.sheida@gmail.com">Email</a>
+      </div>
+      <a href="#portfolio" class="cta-btn">View Portfolio</a>
     </div>
-    <p class="hero-tagline">✨ Design with clarity. Creativity with purpose.</p>
-    <p class="hero-bio">
-      Art direction and design that transform brands into experiences.<br><br>
-      I bring creativity, innovation, and precision to every project — from high-end branding and packaging to digital storytelling and large-scale campaigns. With 15+ years of experience, I create design solutions that don't just look beautiful, but feel timeless.
-    </p>
-    <div class="hero-links">
-      <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
-      <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
-      <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a>
-    </div>
-    <a href="#portfolio" class="cta-btn">View Portfolio</a>
   </div>
 </section>
 
@@ -299,61 +415,87 @@
 
 <!-- BRANDING -->
 <section id="branding" class="gallery-section">
-  <div class="section-header">
-    <h2>Branding</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>Branding</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-branding"></div>
 </section>
 
 <!-- ADVERTISING -->
 <section id="advertising" class="gallery-section">
-  <div class="section-header">
-    <h2>Advertising</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>Advertising</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-advertising"></div>
 </section>
 
 <!-- WEBSITE-UI -->
 <section id="website-ui" class="gallery-section">
-  <div class="section-header">
-    <h2>Website – UI</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>Website – UI</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-website-ui"></div>
 </section>
 
 <!-- BTL -->
 <section id="btl" class="gallery-section">
-  <div class="section-header">
-    <h2>BTL</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>BTL</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-btl"></div>
 </section>
 
 <!-- SOCIAL MEDIA -->
 <section id="social-media" class="gallery-section">
-  <div class="section-header">
-    <h2>Social Media</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>Social Media</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-social-media"></div>
 </section>
 
 <!-- ENVIRONMENTAL DESIGN -->
 <section id="environmental-design" class="gallery-section">
-  <div class="section-header">
-    <h2>Environmental Design</h2>
-    <span class="year">2025</span>
-  </div>
+  <div class="section-header"><h2>Environmental Design</h2><span class="year">2025</span></div>
   <div class="masonry" id="gallery-environmental-design"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <!-- Info -->
+    <div>
+      <h2>Let's Work<br>Together</h2>
+      <p class="contact-sub">Available for freelance projects, collaborations, and full-time opportunities.</p>
+
+      <div class="contact-info-item">
+        <span class="label">Email</span>
+        <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">Phone</span>
+        <a href="tel:+1XXXXXXXXXX">+1 (XXX) XXX-XXXX</a>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">Location</span>
+        <span>Toronto, Ontario, Canada</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">Behance</span>
+        <a href="https://www.behance.net/sheidahadad" target="_blank">behance.net/sheidahadad</a>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">LinkedIn</span>
+        <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">linkedin.com/in/sheida-haddad</a>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Tell me about your project…" required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="form-success" id="formSuccess">✓ Message sent. I'll be in touch soon.</p>
+      </form>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Sheida Haddad &nbsp;·&nbsp; <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a> &nbsp;·&nbsp; <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a></p>
+  <p>© 2025 Sheida Haddad &nbsp;·&nbsp; Toronto, Canada &nbsp;·&nbsp; <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a> &nbsp;·&nbsp; <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a></p>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -368,6 +510,73 @@
 <script>
 const CDN = 'https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/';
 
+// ── HERO BACKGROUND SLIDESHOW ──────────────────────────────────────────────
+const heroImages = [
+  'b7ab9c97-2486-4c84-8f56-624ae760079a_car_4x3.png?h=4321dca7c58b9b766872feadef836724',
+  '68d2e6d9-fe71-46d1-ae45-173f7facc431_car_4x3.png?h=c2dd8eca506660b28831972234f346e4',
+  '13d73a7c-d735-497d-ab44-f0a7b7e7df0e_rwc_0x15x1101x825x1101.png?h=c0199722451f6a69e263819fd5d8b70e',
+  '43e077c5-2c96-4b1d-99b0-18f9d4db6bc6_car_4x3.jpg?h=9de89cc8bab1b92a546ace3e102f1718',
+  '6231f0e7-b11e-44c0-86fa-bdf84e0bd7a4_carw_4x3x640.jpg?h=87149c996afcf54d97d93b60c7128c69',
+  '537b6318-7150-4107-8f6b-4ee5e5487a3e_carw_4x3x640.png?h=ff8da8ea13c13955942b2ff08b77bb40',
+  'eac87ac9-b48a-4616-8309-529694a62ca0_rw_1920.jpg?h=b818e1c50953588e3252e81002ce6b1d',
+  'bbcb592f-1279-4159-aa2a-8ff321646a6e_rw_1920.jpg?h=88435c26d42d1f6e67fb5002188870b0',
+  '1984a746-546c-42be-947e-6c1ac294c0c9_rw_1920.png?h=d4d67f7871b0e2ac1b773ba96ba10aa9',
+];
+
+const heroBg = document.getElementById('heroBg');
+const slides = heroImages.map(src => {
+  const div = document.createElement('div');
+  div.className = 'hero-bg-slide';
+  div.style.backgroundImage = `url(${CDN}${src})`;
+  heroBg.appendChild(div);
+  return div;
+});
+
+let currentSlide = 0;
+slides[0].classList.add('active');
+setInterval(() => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}, 4000);
+
+// ── TYPEWRITER ─────────────────────────────────────────────────────────────
+const words = [
+  'Graphic Design',
+  'Branding & Identity',
+  'Art Direction',
+  'Packaging Design',
+  'Web & UI',
+  'Environmental Design',
+  'Campaign Strategy',
+];
+let wIndex = 0, cIndex = 0, deleting = false;
+const twEl = document.getElementById('typewriter');
+
+function typeStep() {
+  const word = words[wIndex];
+  if (!deleting) {
+    twEl.textContent = word.slice(0, ++cIndex);
+    if (cIndex === word.length) {
+      deleting = true;
+      setTimeout(typeStep, 1800);
+      return;
+    }
+    setTimeout(typeStep, 75);
+  } else {
+    twEl.textContent = word.slice(0, --cIndex);
+    if (cIndex === 0) {
+      deleting = false;
+      wIndex = (wIndex + 1) % words.length;
+      setTimeout(typeStep, 400);
+      return;
+    }
+    setTimeout(typeStep, 40);
+  }
+}
+typeStep();
+
+// ── GALLERIES ──────────────────────────────────────────────────────────────
 const galleries = {
   branding: [
     { src: '1984a746-546c-42be-947e-6c1ac294c0c9_rw_1920.png?h=d4d67f7871b0e2ac1b773ba96ba10aa9' },
@@ -446,10 +655,10 @@ const galleries = {
     { src: '5bc8e06b-23df-4735-af15-f3e1a918256d_rw_1920.jpg?h=9ed56d5d10c86be7c328f3ff7bfc6616', caption: 'Samsung: Football field surrounded by you!' },
     { src: '5ff53f3f-16dc-47f7-a530-b7c23a8bd260_rw_1920.jpg?h=72d0d1ef47bf5b259df54bcdf8553709', caption: 'Behrouz pickled Jalapeno: Jalapeno pepper just burns!' },
     { src: 'b188c74b-dfbe-43f3-9cd9-1c29e1160098_rw_1920.jpg?h=b21551248f5c235be23c2ca5ce70b630', caption: 'Persil: It washes, it takes the stains away!' },
-    { src: '67aa8cc5-47e3-4e71-9130-5215133a2acf_rw_1920.jpg?h=3f284253388083112fc6000babb6537a', caption: 'MCI: A special welcome! With special gifts by buying and activating Hamrahe Aval post-paid SIM cards' },
-    { src: 'abe97b55-cbfe-4e9a-b472-e26b8a1c1f13_rw_1920.jpg?h=e1a18ee239d34d07911a3740b7c4edba', caption: 'MCI: Take it from here! 20 allowances – Hamrahe Aval "50 Million Toman Winners" campaign' },
+    { src: '67aa8cc5-47e3-4e71-9130-5215133a2acf_rw_1920.jpg?h=3f284253388083112fc6000babb6537a', caption: 'MCI: A special welcome!' },
+    { src: 'abe97b55-cbfe-4e9a-b472-e26b8a1c1f13_rw_1920.jpg?h=e1a18ee239d34d07911a3740b7c4edba', caption: 'MCI: Take it from here!' },
     { src: '3c40ceca-cb36-427b-9ffa-1894a8daab73_rw_1920.jpg?h=9f8089d02309fc89a1477007843caa62', caption: 'MCI: Download whatever you need, even a Whale' },
-    { src: 'b6fd4c04-e61d-4935-8fa4-992ecf2a7803_rw_1920.jpg?h=e9af00d422aebf957fb2033153ee8787', caption: 'MCI: Arrange your desirable combination! Combined packages by your choice' },
+    { src: 'b6fd4c04-e61d-4935-8fa4-992ecf2a7803_rw_1920.jpg?h=e9af00d422aebf957fb2033153ee8787', caption: 'MCI: Arrange your desirable combination!' },
     { src: '97cb6a2d-cc31-41eb-b53a-90955308ea86_rw_1920.jpg?h=026c23f979dc051a687c0c79c0953c1a', caption: 'Daewoo: This is the smart rhythm of your life' },
     { src: '29493518-70f4-4d36-94bd-ae3e7c51787b_rw_1920.jpg?h=80242ae2f031b132b8953ab10535d22c', caption: 'Multicoco: Bold and chocolate change!' },
     { src: '99e6a73c-5e8c-4994-b1c0-fa1d09a821d3_rw_1920.jpg?h=d5684e572a43f48a94372e9ce73587b1', caption: 'Multicoco: Bold and chocolate change!' },
@@ -459,18 +668,18 @@ const galleries = {
     { src: '514bcd3e-4f3b-4f88-bb02-b342f32164d5_rw_1920.jpg?h=358736f657c215386d6793870ba68696', caption: 'Castle: Add happiness to it! Sparkling red apple drink' },
     { src: 'd59d07d8-7d7f-47e3-98f5-fd2b9fc524ff_rw_1920.jpg?h=f397ee1c1a56ce1dcd166e6ab69c933d', caption: "Snowa Home Appliance: Count on Snowa's winter lottery" },
     { src: '77137487-b0b0-4d89-969a-99b56e661bfc_rw_1920.jpg?h=5384accfea4af50d15afc3cc72c670af', caption: 'Mellat Bank: Move confidently!' },
-    { src: 'b2859d84-1559-44a7-b315-40f6bfb1d72d_rw_1920.jpg?h=25ec2f48cdd1431031ce55fb12fed4bc', caption: 'Kalleh Lucky U carbonated beverage: Happy everywhere, Fresh anytime!' },
+    { src: 'b2859d84-1559-44a7-b315-40f6bfb1d72d_rw_1920.jpg?h=25ec2f48cdd1431031ce55fb12fed4bc', caption: 'Kalleh Lucky U: Happy everywhere, Fresh anytime!' },
     { src: '7e76775b-e096-4470-a75f-e2eea29485f9_rw_1920.jpg?h=5f66b66b234732b524cfdf8059061ae3', caption: '' },
     { src: 'da256559-db40-4dc3-aa26-b9c38b919c95_rw_1920.jpg?h=6eef63c56dcf03a522e11fed3c6d9051', caption: 'Mellat Bank: Win the big prize' },
     { src: '0ac9fc9e-63ef-4563-89f5-ecfc4a52e504_rw_1920.jpg?h=8a832d692644c563ca172bac7f48fdf4', caption: 'Barez Tire: O Barez, spin!' },
     { src: '4c2bdb1f-d61e-403d-8bf3-1ae7060bacbf_rw_1920.jpg?h=766a6beb7e612837eabda804b71f5f93', caption: 'Barez Tire: Be a fighter!' },
-    { src: '484ab82d-4a1e-4fc3-bf31-c723b8340dee_rw_1920.jpg?h=98496e1958f322caa8dba81f176e28a4', caption: 'Palroom Canned Food (Tizing): Open it with smile!' },
-    { src: 'a05f66b7-91ea-4385-bc3e-8cd1fdd2a5e6_rw_1920.jpg?h=6445ccdc4e01667db963fb4b4c2fb385', caption: 'Palroom Canned Food (Opening): Open it with smile!' },
-    { src: 'bafd59bc-6469-457d-8837-5fd0191845f6_rw_1920.jpg?h=22e9b9960ae9a68c458a93fe538e377e', caption: 'Rightel: Professional SIM card, affordable internet for all social classes' },
-    { src: '1b8993cf-0e9c-4a31-ac0c-dc4c5414db22_rw_1920.jpg?h=c6fba33a7dcee79a737e3cfb407776a6', caption: "Rightel: 1 month, 1 Gb free watching in Aparat, Filimo and Children Aparat" },
-    { src: '261a32af-0f73-41ea-9534-601136706399_rw_1920.jpg?h=d45558d015f3d313ee77fd88f4ee3615', caption: 'Shahr Bank: A multifunctional card! Shahr Bank citizenship card' },
+    { src: '484ab82d-4a1e-4fc3-bf31-c723b8340dee_rw_1920.jpg?h=98496e1958f322caa8dba81f176e28a4', caption: 'Palroom Canned Food: Open it with smile!' },
+    { src: 'a05f66b7-91ea-4385-bc3e-8cd1fdd2a5e6_rw_1920.jpg?h=6445ccdc4e01667db963fb4b4c2fb385', caption: 'Palroom Canned Food: Open it with smile!' },
+    { src: 'bafd59bc-6469-457d-8837-5fd0191845f6_rw_1920.jpg?h=22e9b9960ae9a68c458a93fe538e377e', caption: 'Rightel: Professional SIM card' },
+    { src: '1b8993cf-0e9c-4a31-ac0c-dc4c5414db22_rw_1920.jpg?h=c6fba33a7dcee79a737e3cfb407776a6', caption: 'Rightel: 1 month, 1 Gb free' },
+    { src: '261a32af-0f73-41ea-9534-601136706399_rw_1920.jpg?h=d45558d015f3d313ee77fd88f4ee3615', caption: 'Shahr Bank: A multifunctional card!' },
     { src: '7f7cbfee-150e-492d-a937-76ef158dcca7_rw_1920.jpg?h=8b950fb71dbef6c3e30050ed533749f3', caption: 'Mihan BiscuStar: A thrill of taste and life!' },
-    { src: '74d98141-c31b-4bf5-aafe-e9414c9ae1ce_rw_1920.jpg?h=eafb0075a42d32a728a909bd3eb7a435', caption: 'Delpazir Mayonnaise: The first producer of low-fat Mayonnaise fortified with vitamin D' },
+    { src: '74d98141-c31b-4bf5-aafe-e9414c9ae1ce_rw_1920.jpg?h=eafb0075a42d32a728a909bd3eb7a435', caption: 'Delpazir Mayonnaise' },
     { src: 'ff1359e9-b731-4bcc-8875-775dbd54526f_rw_1920.png?h=1e7be4461ad747577f8d33949fa86938', caption: 'JoJo non-alcoholic beer: A bit of health, A bit of joy!' },
     { src: '2a6b3b68-eae9-48d9-8881-53e5eea8bc70_rw_1920.png?h=af63462bcc8a760dffb931d1a6ea5224', caption: 'JoJo non-alcoholic beer: A bit of health, A bit of joy!' },
     { src: 'bebb8214-03dd-423b-8c2c-510b24e7f6a1_rw_1920.jpg?h=3aabd15794cd0cdc38553aacc182dda8', caption: 'Parsian Bank: Dedicated branch in your company' },
@@ -548,7 +757,6 @@ const galleries = {
   ]
 };
 
-// Build galleries
 function buildGallery(id, items) {
   const container = document.getElementById('gallery-' + id);
   if (!container) return;
@@ -564,39 +772,58 @@ function buildGallery(id, items) {
     container.appendChild(div);
   });
 }
-
 Object.entries(galleries).forEach(([id, items]) => buildGallery(id, items));
 
-// Lightbox
-let lbImages = [], lbIndex = 0;
+// ── CONTACT FORM (Formspree) ───────────────────────────────────────────────
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('button');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      form.reset();
+      document.getElementById('formSuccess').style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+  }
+});
 
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────
+let lbImages = [], lbIndex = 0;
 function openLightbox(images, index) {
-  lbImages = images;
-  lbIndex = index;
+  lbImages = images; lbIndex = index;
   showLbImage();
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-
 function showLbImage() {
   document.getElementById('lb-img').src = lbImages[lbIndex].src;
   document.getElementById('lb-caption').textContent = lbImages[lbIndex].caption || '';
 }
-
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
-
 function lbNav(dir) {
   lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
   showLbImage();
 }
-
 document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLightbox();
 });
-
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('active')) return;
   if (e.key === 'Escape') closeLightbox();
