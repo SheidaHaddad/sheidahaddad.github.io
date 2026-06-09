@@ -3,351 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sheida Haddad – Graphic Designer</title>
+<title>Sheida Haddad — Graphic Designer & Art Director</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --black: #111;
-    --gray: #888;
-    --light: #f5f5f5;
-    --white: #fff;
+    --bg: #0a0a0a;
+    --bg-2: #0e0e0e;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.14);
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.5);
+    --muted-2: rgba(255,255,255,0.32);
     --font: 'Inter', sans-serif;
+    --serif: 'Fraunces', Georgia, serif;
   }
   html { scroll-behavior: smooth; }
   body {
     font-family: var(--font);
-    color: var(--black);
-    background: var(--white);
+    color: var(--text);
+    background: var(--bg);
     font-size: 14px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
+  body.no-scroll { overflow: hidden; }
+  a { color: inherit; }
 
-  /* NAV */
+  /* ── NAV ─────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 40px;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(10,10,10,0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
   }
   nav .logo {
-    font-size: 16px; font-weight: 600; letter-spacing: 0.02em;
+    font-family: var(--serif);
+    font-size: 18px; font-weight: 400; letter-spacing: 0.01em;
     text-decoration: none; color: #fff;
   }
-  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul { list-style: none; display: flex; gap: 30px; }
   nav ul a {
-    text-decoration: none; color: rgba(255,255,255,0.4); font-size: 13px;
-    letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; color: var(--muted-2); font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
     transition: color 0.2s;
   }
   nav ul a:hover { color: #fff; }
 
-  /* HERO */
-  #home {
-    min-height: 100vh;
-    display: flex;
-    background: #0a0a0a;
-  }
-
-  /* LEFT PANEL */
+  /* ── HERO ────────────────────────────────────────────── */
+  #home { min-height: 100vh; display: flex; background: var(--bg); }
   .hero-left {
-    width: 46%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 46%; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
     padding: 110px 52px 60px 52px;
-    border-right: 1px solid rgba(255,255,255,0.07);
+    border-right: 1px solid var(--line);
     flex-shrink: 0;
   }
   .hero-eyebrow {
     font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(255,255,255,0.3); margin-bottom: 20px;
+    color: var(--muted-2); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #4ade80; box-shadow: 0 0 10px #4ade80;
+    display: inline-block;
   }
   .hero-left h1 {
-    font-size: clamp(38px, 4vw, 60px);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    color: #ffffff;
-    margin-bottom: 20px;
+    font-family: var(--serif);
+    font-size: clamp(44px, 4.6vw, 68px);
+    font-weight: 400; letter-spacing: -0.02em; line-height: 1.0;
+    color: #fff; margin-bottom: 22px;
   }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 26px; }
   .hero-pill {
-    font-size: 10px; padding: 3px 12px;
-    border: 0.5px solid rgba(255,255,255,0.15);
-    border-radius: 20px; color: rgba(255,255,255,0.45);
-    letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 10px; padding: 4px 13px;
+    border: 0.5px solid var(--line-2); border-radius: 20px;
+    color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
   }
   .hero-bio {
-    font-size: 14px; color: rgba(255,255,255,0.45);
-    line-height: 1.8; margin-bottom: 32px; max-width: 380px;
+    font-size: 14.5px; color: var(--muted); line-height: 1.8;
+    margin-bottom: 34px; max-width: 400px;
   }
-  .hero-links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
+  .hero-links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 38px; }
   .hero-links a {
-    text-decoration: none; font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    border-bottom: 0.5px solid rgba(255,255,255,0.2);
-    padding-bottom: 2px; letter-spacing: 0.06em;
-    text-transform: uppercase; transition: color 0.2s, border-color 0.2s;
+    text-decoration: none; font-size: 12px; color: var(--muted);
+    border-bottom: 0.5px solid var(--line-2); padding-bottom: 2px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    transition: color 0.2s, border-color 0.2s;
   }
   .hero-links a:hover { color: #fff; border-color: #fff; }
   .cta-btn {
-    display: inline-block;
-    padding: 13px 32px;
-    background: #fff;
-    color: #0a0a0a;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 30px; background: #fff; color: #0a0a0a;
+    text-decoration: none; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: gap 0.25s, opacity 0.2s; align-self: flex-start;
   }
-  .cta-btn:hover { opacity: 0.8; }
+  .cta-btn:hover { gap: 16px; opacity: 0.9; }
+  .cta-btn .arr { transition: transform 0.25s; }
+  .cta-btn:hover .arr { transform: translateX(3px); }
 
-  /* RIGHT PANEL — animated slogan */
   .hero-right {
-    flex: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 110px 52px 60px 60px;
-    overflow: hidden;
+    flex: 1; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 110px 52px 60px 60px; overflow: hidden;
   }
   .slogan-block { position: relative; }
   .slogan-line {
-    font-size: clamp(52px, 6vw, 88px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    height: clamp(56px, 7vw, 96px);
-    overflow: hidden;
-    position: relative;
+    font-family: var(--serif);
+    font-size: clamp(52px, 6vw, 92px); font-weight: 400;
+    letter-spacing: -0.03em; line-height: 1;
+    height: clamp(56px, 7vw, 100px); overflow: hidden; position: relative;
   }
   .slogan-word {
-    display: block;
-    color: #ffffff;
-    transform: translateY(105%);
-    opacity: 0;
+    display: block; color: #fff; transform: translateY(105%); opacity: 0;
     transition: transform 0.75s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease;
   }
   .slogan-word.visible { transform: translateY(0); opacity: 1; }
   .slogan-word.exit { transform: translateY(-110%); opacity: 0; transition: transform 0.5s ease-in, opacity 0.4s ease; }
-
   .slogan-suffix {
-    font-size: clamp(52px, 6vw, 88px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: rgba(255,255,255,0.12);
-    margin-top: 4px;
+    font-family: var(--serif);
+    font-size: clamp(52px, 6vw, 92px); font-weight: 400;
+    letter-spacing: -0.03em; line-height: 1;
+    color: rgba(255,255,255,0.16); margin-top: 4px;
   }
-  .slogan-divider {
-    width: 40px; height: 1px;
-    background: rgba(255,255,255,0.2);
-    margin: 28px 0;
-  }
-  .slogan-sub {
-    font-size: 11px; color: rgba(255,255,255,0.3);
-    letter-spacing: 0.16em; text-transform: uppercase;
-  }
+  .slogan-divider { width: 44px; height: 1px; background: var(--line-2); margin: 30px 0; }
+  .slogan-sub { font-size: 11px; color: var(--muted-2); letter-spacing: 0.16em; text-transform: uppercase; }
 
-  @media (max-width: 800px) {
+  @media (max-width: 860px) {
     #home { flex-direction: column; }
-    .hero-left { width: 100%; min-height: auto; padding: 100px 24px 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .hero-right { padding: 40px 24px 60px; min-height: 50vh; }
-    .slogan-suffix { color: rgba(255,255,255,0.1); }
+    .hero-left { width: 100%; min-height: auto; padding: 100px 24px 40px; border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-right { padding: 46px 24px 64px; min-height: 46vh; }
   }
 
-  /* SECTIONS */
-  section { padding: 100px 40px 60px; }
-
-  /* PORTFOLIO GRID */
-  #portfolio { background: var(--light); }
-  #portfolio h2 {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gray); margin-bottom: 40px;
+  /* ── SECTION SHELL ───────────────────────────────────── */
+  section { padding: 110px 40px 80px; }
+  .sec-eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted-2); margin-bottom: 8px;
   }
-  .portfolio-grid {
+  .sec-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.4vw, 44px); font-weight: 400;
+    letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  .sec-lead { font-size: 14.5px; color: var(--muted); max-width: 520px; margin-bottom: 52px; }
+
+  /* ── PORTFOLIO INDEX (category gateway) ──────────────── */
+  #portfolio { background: var(--bg); border-top: 1px solid var(--line); }
+  .cat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
-  .portfolio-card {
-    position: relative; overflow: hidden; cursor: pointer;
-    aspect-ratio: 4/3;
-    text-decoration: none; display: block;
-  }
-  .portfolio-card img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease;
-  }
-  .portfolio-card:hover img { transform: scale(1.04); }
-  .portfolio-card .card-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 40px 20px 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.6));
-    color: #fff;
-  }
-  .portfolio-card .card-label h3 { font-size: 18px; font-weight: 400; margin-bottom: 2px; }
-  .portfolio-card .card-label span { font-size: 11px; opacity: 0.7; letter-spacing: 0.1em; }
+  @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
 
-  /* GALLERY SECTIONS */
-  .gallery-section { border-top: 1px solid #eee; }
-  .section-header {
-    display: flex; align-items: baseline; justify-content: space-between;
-    margin-bottom: 40px;
+  .cat-card {
+    position: relative; display: block; overflow: hidden;
+    aspect-ratio: 4/3; cursor: pointer; text-decoration: none;
+    background: #161616; border: 1px solid var(--line);
+    border-radius: 4px;
   }
-  .section-header h2 {
-    font-size: clamp(24px, 3vw, 36px); font-weight: 300;
-    letter-spacing: -0.01em;
+  .cat-card img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%) brightness(0.62) contrast(1.05);
+    transform: scale(1.01);
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.6s ease;
   }
-  .section-header .year { font-size: 12px; color: var(--gray); letter-spacing: 0.1em; }
+  .cat-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.88) 100%);
+    transition: background 0.5s ease;
+  }
+  .cat-card:hover img { transform: scale(1.07); filter: grayscale(0%) brightness(0.78) contrast(1.05); }
+  .cat-card:hover::after { background: linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.82) 100%); }
+
+  .cat-meta {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 22px 24px;
+  }
+  .cat-num {
+    font-size: 11px; letter-spacing: 0.18em; color: rgba(255,255,255,0.55);
+    font-variant-numeric: tabular-nums;
+  }
+  .cat-bottom { }
+  .cat-name {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2vw, 28px); font-weight: 400;
+    letter-spacing: -0.01em; line-height: 1.1; color: #fff;
+    margin-bottom: 8px;
+  }
+  .cat-row {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 12px;
+  }
+  .cat-count {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .cat-arrow {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 14px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+  .cat-card:hover .cat-arrow { background: #fff; color: #0a0a0a; transform: rotate(-45deg); }
+
+  /* ── CATEGORY DETAIL VIEW (full screen) ──────────────── */
+  #category-view {
+    display: none;
+    position: fixed; inset: 0; z-index: 150;
+    background: var(--bg);
+    overflow-y: auto;
+  }
+  #category-view.active { display: block; }
+  .cv-bar {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(10,10,10,0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .cv-back {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); font-family: var(--font); font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s, gap 0.25s;
+  }
+  .cv-back:hover { color: #fff; gap: 14px; }
+  .cv-bar .cv-logo { font-family: var(--serif); font-size: 16px; color: #fff; }
+  .cv-head { padding: 70px 40px 40px; border-bottom: 1px solid var(--line); }
+  .cv-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+  .cv-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 76px); font-weight: 400;
+    letter-spacing: -0.025em; line-height: 1; margin-bottom: 16px;
+  }
+  .cv-desc { font-size: 15px; color: var(--muted); max-width: 600px; line-height: 1.75; }
+  .cv-count { font-size: 12px; color: var(--muted-2); margin-top: 18px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cv-body { padding: 44px 40px 90px; }
 
   /* MASONRY */
-  .masonry { columns: 3; column-gap: 4px; }
-  @media (max-width: 900px) { .masonry { columns: 2; } }
-  @media (max-width: 500px) { .masonry { columns: 1; } }
+  .masonry { columns: 3; column-gap: 14px; }
+  @media (max-width: 1000px) { .masonry { columns: 2; } }
+  @media (max-width: 560px) { .masonry { columns: 1; } }
   .masonry-item {
-    break-inside: avoid; margin-bottom: 4px;
+    break-inside: avoid; margin-bottom: 14px;
     position: relative; overflow: hidden; cursor: pointer;
+    border-radius: 4px; background: #141414;
   }
-  .masonry-item img { width: 100%; display: block; transition: transform 0.5s ease; }
-  .masonry-item:hover img { transform: scale(1.03); }
+  .masonry-item img { width: 100%; display: block; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.5s; filter: brightness(0.95); }
+  .masonry-item:hover img { transform: scale(1.04); filter: brightness(1.05); }
   .masonry-item .caption {
     position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 30px 14px 12px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.65));
-    color: #fff; font-size: 11px; line-height: 1.4;
+    padding: 36px 16px 14px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff; font-size: 11.5px; line-height: 1.45;
     opacity: 0; transform: translateY(6px);
     transition: opacity 0.3s, transform 0.3s;
   }
   .masonry-item:hover .caption { opacity: 1; transform: translateY(0); }
 
-  /* CONTACT */
-  #contact {
-    background: var(--white);
-    border-top: 1px solid #eee;
-  }
-  #contact .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    max-width: 960px;
-  }
-  @media (max-width: 720px) {
-    #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-  }
-  #contact h2 {
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 300;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  #contact .contact-sub {
-    font-size: 14px; color: var(--gray); margin-bottom: 36px;
-  }
-  .contact-info-item {
-    display: flex; flex-direction: column;
-    margin-bottom: 24px;
-  }
-  .contact-info-item .label {
-    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gray); margin-bottom: 4px;
-  }
-  .contact-info-item a, .contact-info-item span {
-    font-size: 14px; color: var(--black); text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .contact-info-item a:hover { opacity: 0.5; }
+  /* ── CONTACT ─────────────────────────────────────────── */
+  #contact { background: var(--bg-2); border-top: 1px solid var(--line); }
+  #contact .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 980px; }
+  @media (max-width: 760px) { #contact .contact-inner { grid-template-columns: 1fr; gap: 48px; } }
+  #contact .contact-sub { font-size: 14.5px; color: var(--muted); margin-bottom: 38px; max-width: 360px; }
+  .contact-info-item { display: flex; flex-direction: column; margin-bottom: 24px; }
+  .contact-info-item .label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 5px; }
+  .contact-info-item a, .contact-info-item span { font-size: 14px; color: #fff; text-decoration: none; transition: opacity 0.2s; }
+  .contact-info-item a:hover { opacity: 0.55; }
 
-  /* FORM */
   .contact-form { display: flex; flex-direction: column; gap: 18px; }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    font-family: var(--font);
-    font-size: 14px;
-    color: var(--black);
-    background: transparent;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: none;
+  .contact-form input, .contact-form textarea {
+    width: 100%; border: none; border-bottom: 1px solid var(--line-2);
+    padding: 11px 0; font-family: var(--font); font-size: 14px;
+    color: #fff; background: transparent; outline: none;
+    transition: border-color 0.2s; resize: none;
   }
-  .contact-form input:focus,
-  .contact-form textarea:focus { border-bottom-color: var(--black); }
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder { color: #bbb; }
+  .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: #fff; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted-2); }
   .contact-form textarea { min-height: 100px; }
   .contact-form button {
-    align-self: flex-start;
-    padding: 12px 32px;
-    background: var(--black);
-    color: var(--white);
-    border: none;
-    font-family: var(--font);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
+    align-self: flex-start; padding: 13px 32px; background: #fff; color: #0a0a0a;
+    border: none; font-family: var(--font); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
     transition: opacity 0.2s;
   }
-  .contact-form button:hover { opacity: 0.7; }
-  .form-success {
-    display: none;
-    font-size: 13px;
-    color: #444;
-    padding: 12px 0;
-    letter-spacing: 0.05em;
-  }
+  .contact-form button:hover { opacity: 0.8; }
+  .form-success { display: none; font-size: 13px; color: var(--muted); padding: 12px 0; letter-spacing: 0.05em; }
 
-  /* LIGHTBOX */
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.93);
-    align-items: center; justify-content: center;
-    flex-direction: column;
-  }
+  /* ── LIGHTBOX ────────────────────────────────────────── */
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; flex-direction: column; }
   .lightbox.active { display: flex; }
-  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
-  .lightbox .lb-caption {
-    color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 14px;
-    max-width: 600px; text-align: center;
-  }
-  .lightbox .lb-close {
-    position: absolute; top: 20px; right: 28px;
-    color: #fff; font-size: 28px; cursor: pointer; background: none;
-    border: none; line-height: 1;
-  }
-  .lightbox .lb-nav {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    color: #fff; font-size: 36px; cursor: pointer; background: none;
-    border: none; padding: 10px 20px; opacity: 0.6; transition: opacity 0.2s;
-  }
+  .lightbox img { max-width: 90vw; max-height: 84vh; object-fit: contain; }
+  .lightbox .lb-caption { color: var(--muted); font-size: 12px; margin-top: 14px; max-width: 600px; text-align: center; }
+  .lightbox .lb-close { position: absolute; top: 20px; right: 28px; color: #fff; font-size: 30px; cursor: pointer; background: none; border: none; line-height: 1; }
+  .lightbox .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 38px; cursor: pointer; background: none; border: none; padding: 10px 20px; opacity: 0.55; transition: opacity 0.2s; }
   .lightbox .lb-nav:hover { opacity: 1; }
-  .lightbox .lb-prev { left: 10px; }
-  .lightbox .lb-next { right: 10px; }
+  .lightbox .lb-prev { left: 10px; } .lightbox .lb-next { right: 10px; }
+  .lightbox .lb-counter { position: absolute; top: 24px; left: 28px; color: var(--muted-2); font-size: 12px; letter-spacing: 0.1em; }
 
-  /* FOOTER */
-  footer {
-    text-align: center; padding: 40px;
-    border-top: 1px solid #eee;
-    font-size: 12px; color: var(--gray);
-  }
-  footer a { color: var(--gray); }
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer { text-align: center; padding: 44px 40px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted-2); }
+  footer a { color: var(--muted-2); text-decoration: none; } footer a:hover { color: #fff; }
 
   @media (max-width: 600px) {
     nav { padding: 14px 20px; }
-    section { padding: 80px 20px 40px; }
+    section { padding: 84px 20px 56px; }
+    .cv-head, .cv-bar { padding-left: 20px; padding-right: 20px; }
+    .cv-body { padding: 32px 20px 70px; }
   }
 </style>
 </head>
@@ -358,148 +335,83 @@
   <a href="#home" class="logo">Sheida Haddad</a>
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#portfolio">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HOME -->
 <section id="home">
-
-  <!-- LEFT -->
   <div class="hero-left">
-    <div class="hero-eyebrow">Toronto, Canada · Available for projects</div>
+    <div class="hero-eyebrow"><span class="dot"></span> Toronto, Canada · Available for projects</div>
     <h1>Sheida<br>Haddad</h1>
     <div class="hero-pills">
-      <span class="hero-pill">Graphic Design</span>
-      <span class="hero-pill">Branding</span>
       <span class="hero-pill">Art Direction</span>
+      <span class="hero-pill">Branding</span>
       <span class="hero-pill">Packaging</span>
+      <span class="hero-pill">Advertising</span>
       <span class="hero-pill">Web · UI</span>
     </div>
     <p class="hero-bio">
-      15+ years transforming brands into timeless experiences — from high-end identity and packaging to digital campaigns and large-scale art direction.
+      Graphic designer and art director with 20 years shaping brands into timeless,
+      considered experiences — from identity and packaging to national campaigns and
+      large-scale art direction.
     </p>
     <div class="hero-links">
-      <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a>
-      <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a>
+      <a href="https://www.behance.net/sheidahadad" target="_blank" rel="noopener">Behance</a>
+      <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:Hadad.sheida@gmail.com">Email</a>
     </div>
-    <a href="#portfolio" class="cta-btn">View Portfolio</a>
+    <a href="#portfolio" class="cta-btn">View Work <span class="arr">→</span></a>
   </div>
 
-  <!-- RIGHT: animated slogan -->
   <div class="hero-right">
     <div class="slogan-block">
-      <div class="slogan-line">
-        <span class="slogan-word" id="sloganWord">Design</span>
-      </div>
+      <div class="slogan-line"><span class="slogan-word" id="sloganWord">Design</span></div>
       <div class="slogan-suffix" id="sloganSuffix">that speaks.</div>
       <div class="slogan-divider"></div>
       <div class="slogan-sub">Crafted with intention. Built to last.</div>
     </div>
   </div>
-
 </section>
 
 <!-- PORTFOLIO INDEX -->
 <section id="portfolio">
-  <h2>Portfolio</h2>
-  <div class="portfolio-grid">
-    <a href="#branding" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/b7ab9c97-2486-4c84-8f56-624ae760079a_car_4x3.png?h=4321dca7c58b9b766872feadef836724" alt="Branding">
-      <div class="card-label"><h3>Branding</h3><span>2025</span></div>
-    </a>
-    <a href="#advertising" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/68d2e6d9-fe71-46d1-ae45-173f7facc431_car_4x3.png?h=c2dd8eca506660b28831972234f346e4" alt="Advertising">
-      <div class="card-label"><h3>Advertising</h3><span>2025</span></div>
-    </a>
-    <a href="#website-ui" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/13d73a7c-d735-497d-ab44-f0a7b7e7df0e_rwc_0x15x1101x825x1101.png?h=c0199722451f6a69e263819fd5d8b70e" alt="Website-UI">
-      <div class="card-label"><h3>Website – UI</h3><span>2025</span></div>
-    </a>
-    <a href="#btl" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/43e077c5-2c96-4b1d-99b0-18f9d4db6bc6_car_4x3.jpg?h=9de89cc8bab1b92a546ace3e102f1718" alt="BTL">
-      <div class="card-label"><h3>BTL</h3><span>2025</span></div>
-    </a>
-    <a href="#social-media" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/6231f0e7-b11e-44c0-86fa-bdf84e0bd7a4_carw_4x3x640.jpg?h=87149c996afcf54d97d93b60c7128c69" alt="Social Media">
-      <div class="card-label"><h3>Social Media</h3><span>2025</span></div>
-    </a>
-    <a href="#environmental-design" class="portfolio-card">
-      <img src="https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/537b6318-7150-4107-8f6b-4ee5e5487a3e_carw_4x3x640.png?h=ff8da8ea13c13955942b2ff08b77bb40" alt="Environmental Design">
-      <div class="card-label"><h3>Environmental Design</h3><span>2025</span></div>
-    </a>
+  <div class="sec-eyebrow">Portfolio</div>
+  <h2 class="sec-title">Selected Work</h2>
+  <p class="sec-lead">Six disciplines, one craft. Choose a category to explore the full body of work.</p>
+  <div class="cat-grid" id="catGrid"></div>
+</section>
+
+<!-- CATEGORY DETAIL VIEW -->
+<div id="category-view">
+  <div class="cv-bar">
+    <button class="cv-back" onclick="closeCategory()">← Back to Portfolio</button>
+    <span class="cv-logo">Sheida Haddad</span>
   </div>
-</section>
-
-<!-- BRANDING -->
-<section id="branding" class="gallery-section">
-  <div class="section-header"><h2>Branding</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-branding"></div>
-</section>
-
-<!-- ADVERTISING -->
-<section id="advertising" class="gallery-section">
-  <div class="section-header"><h2>Advertising</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-advertising"></div>
-</section>
-
-<!-- WEBSITE-UI -->
-<section id="website-ui" class="gallery-section">
-  <div class="section-header"><h2>Website – UI</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-website-ui"></div>
-</section>
-
-<!-- BTL -->
-<section id="btl" class="gallery-section">
-  <div class="section-header"><h2>BTL</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-btl"></div>
-</section>
-
-<!-- SOCIAL MEDIA -->
-<section id="social-media" class="gallery-section">
-  <div class="section-header"><h2>Social Media</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-social-media"></div>
-</section>
-
-<!-- ENVIRONMENTAL DESIGN -->
-<section id="environmental-design" class="gallery-section">
-  <div class="section-header"><h2>Environmental Design</h2><span class="year">2025</span></div>
-  <div class="masonry" id="gallery-environmental-design"></div>
-</section>
+  <div class="cv-head">
+    <div class="cv-eyebrow" id="cvEyebrow">Portfolio</div>
+    <h1 class="cv-title" id="cvTitle"></h1>
+    <p class="cv-desc" id="cvDesc"></p>
+    <div class="cv-count" id="cvCount"></div>
+  </div>
+  <div class="cv-body">
+    <div class="masonry" id="cvMasonry"></div>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <!-- Info -->
     <div>
-      <h2>Let's Work<br>Together</h2>
+      <div class="sec-eyebrow">Contact</div>
+      <h2 class="sec-title">Let's Work Together</h2>
       <p class="contact-sub">Available for freelance projects, collaborations, and full-time opportunities.</p>
-
-      <div class="contact-info-item">
-        <span class="label">Email</span>
-        <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a>
-      </div>
-      <div class="contact-info-item">
-        <span class="label">Phone</span>
-        <a href="tel:+1XXXXXXXXXX">+1 (XXX) XXX-XXXX</a>
-      </div>
-      <div class="contact-info-item">
-        <span class="label">Location</span>
-        <span>Toronto, Ontario, Canada</span>
-      </div>
-      <div class="contact-info-item">
-        <span class="label">Behance</span>
-        <a href="https://www.behance.net/sheidahadad" target="_blank">behance.net/sheidahadad</a>
-      </div>
-      <div class="contact-info-item">
-        <span class="label">LinkedIn</span>
-        <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">linkedin.com/in/sheida-haddad</a>
-      </div>
+      <div class="contact-info-item"><span class="label">Email</span><a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a></div>
+      <div class="contact-info-item"><span class="label">Location</span><span>Toronto, Ontario, Canada</span></div>
+      <div class="contact-info-item"><span class="label">Behance</span><a href="https://www.behance.net/sheidahadad" target="_blank" rel="noopener">behance.net/sheidahadad</a></div>
+      <div class="contact-info-item"><span class="label">LinkedIn</span><a href="http://www.linkedin.com/in/sheida-haddad" target="_blank" rel="noopener">linkedin.com/in/sheida-haddad</a></div>
     </div>
-
-    <!-- Form -->
     <div>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
@@ -513,13 +425,13 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2025 Sheida Haddad &nbsp;·&nbsp; Toronto, Canada &nbsp;·&nbsp; <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.behance.net/sheidahadad" target="_blank">Behance</a> &nbsp;·&nbsp; <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank">LinkedIn</a></p>
+  <p>© 2025 Sheida Haddad &nbsp;·&nbsp; Toronto, Canada &nbsp;·&nbsp; <a href="mailto:Hadad.sheida@gmail.com">Hadad.sheida@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.behance.net/sheidahadad" target="_blank" rel="noopener">Behance</a> &nbsp;·&nbsp; <a href="http://www.linkedin.com/in/sheida-haddad" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
+  <span class="lb-counter" id="lb-counter"></span>
   <button class="lb-close" onclick="closeLightbox()">×</button>
   <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8249;</button>
   <img id="lb-img" src="" alt="">
@@ -530,7 +442,7 @@
 <script>
 const CDN = 'https://cdn.myportfolio.com/343cf5ba-f155-4aac-bc36-a4cc16c470b3/';
 
-// ── ANIMATED SLOGAN ────────────────────────────────────────────────────────
+/* ── ANIMATED SLOGAN ─────────────────────────────────── */
 const slogans = [
   { word: 'Design',     suffix: 'that speaks.' },
   { word: 'Brands',     suffix: 'that last.' },
@@ -542,26 +454,29 @@ const slogans = [
 let sIdx = 0;
 const sWord = document.getElementById('sloganWord');
 const sSuffix = document.getElementById('sloganSuffix');
-
 function nextSlogan() {
-  sWord.classList.remove('visible');
-  sWord.classList.add('exit');
+  sWord.classList.remove('visible'); sWord.classList.add('exit');
   setTimeout(() => {
     sIdx = (sIdx + 1) % slogans.length;
     sWord.classList.remove('exit');
     sWord.textContent = slogans[sIdx].word;
     sSuffix.textContent = slogans[sIdx].suffix;
-    void sWord.offsetWidth;
-    sWord.classList.add('visible');
+    void sWord.offsetWidth; sWord.classList.add('visible');
   }, 550);
 }
+setTimeout(() => { sWord.classList.add('visible'); setInterval(nextSlogan, 3000); }, 200);
 
-setTimeout(() => {
-  sWord.classList.add('visible');
-  setInterval(nextSlogan, 3000);
-}, 200);
+/* ── CATEGORY METADATA ───────────────────────────────── */
+const categories = [
+  { id: 'branding',             name: 'Branding / Packaging', desc: 'Identity systems, logotypes and packaging — brand worlds built to feel inevitable and stand the test of time.', cover: 'b7ab9c97-2486-4c84-8f56-624ae760079a_car_4x3.png?h=4321dca7c58b9b766872feadef836724' },
+  { id: 'advertising',          name: 'Advertising',          desc: 'Campaigns and key visuals for national brands — concepts that turn a single image into a message people remember.', cover: '68d2e6d9-fe71-46d1-ae45-173f7facc431_car_4x3.png?h=c2dd8eca506660b28831972234f346e4' },
+  { id: 'website-ui',           name: 'Website / UI',         desc: 'Digital products and interfaces — considered layouts, clear hierarchy and a designer’s eye on every pixel.', cover: '13d73a7c-d735-497d-ab44-f0a7b7e7df0e_rwc_0x15x1101x825x1101.png?h=c0199722451f6a69e263819fd5d8b70e' },
+  { id: 'btl',                  name: 'BTL',                  desc: 'Below-the-line: activations, collateral and point-of-sale that bring a brand into the physical world.', cover: '43e077c5-2c96-4b1d-99b0-18f9d4db6bc6_car_4x3.jpg?h=9de89cc8bab1b92a546ace3e102f1718' },
+  { id: 'social-media',         name: 'Social Media',         desc: 'Content systems and campaign assets designed to live and breathe across every feed and format.', cover: '6231f0e7-b11e-44c0-86fa-bdf84e0bd7a4_carw_4x3x640.jpg?h=87149c996afcf54d97d93b60c7128c69' },
+  { id: 'environmental-design', name: 'Environmental Design', desc: 'Spatial, signage and experiential design — branding that wraps around people and place.', cover: '537b6318-7150-4107-8f6b-4ee5e5487a3e_carw_4x3x640.png?h=ff8da8ea13c13955942b2ff08b77bb40' },
+];
 
-// ── GALLERIES ──────────────────────────────────────────────────────────────
+/* ── GALLERIES (full work per category) ──────────────── */
 const galleries = {
   branding: [
     { src: '1984a746-546c-42be-947e-6c1ac294c0c9_rw_1920.png?h=d4d67f7871b0e2ac1b773ba96ba10aa9' },
@@ -742,75 +657,117 @@ const galleries = {
   ]
 };
 
-function buildGallery(id, items) {
-  const container = document.getElementById('gallery-' + id);
-  if (!container) return;
-  const allImgs = [];
+/* ── BUILD CATEGORY GATEWAY ──────────────────────────── */
+const catGrid = document.getElementById('catGrid');
+categories.forEach((cat, i) => {
+  const count = (galleries[cat.id] || []).length;
+  const a = document.createElement('a');
+  a.className = 'cat-card';
+  a.href = '#' + cat.id;
+  a.addEventListener('click', (e) => { e.preventDefault(); openCategory(cat.id); });
+  a.innerHTML = `
+    <img src="${CDN + cat.cover}" alt="${cat.name}" loading="lazy">
+    <div class="cat-meta">
+      <span class="cat-num">${String(i + 1).padStart(2, '0')} / ${String(categories.length).padStart(2, '0')}</span>
+      <div class="cat-bottom">
+        <div class="cat-name">${cat.name}</div>
+        <div class="cat-row">
+          <span class="cat-count">${count} ${count === 1 ? 'project' : 'projects'}</span>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </div>`;
+  catGrid.appendChild(a);
+});
+
+/* ── CATEGORY DETAIL VIEW ────────────────────────────── */
+const cvView = document.getElementById('category-view');
+const cvMasonry = document.getElementById('cvMasonry');
+let currentImgs = [];
+
+function openCategory(id) {
+  const cat = categories.find(c => c.id === id);
+  if (!cat) return;
+  const items = galleries[id] || [];
+  document.getElementById('cvTitle').textContent = cat.name;
+  document.getElementById('cvDesc').textContent = cat.desc;
+  document.getElementById('cvCount').textContent = items.length + ' projects · 2025';
+
+  cvMasonry.innerHTML = '';
+  currentImgs = [];
   items.forEach((item, i) => {
+    const url = CDN + item.src;
+    currentImgs.push({ src: url, caption: item.caption || '' });
     const div = document.createElement('div');
     div.className = 'masonry-item';
-    const url = CDN + item.src;
-    allImgs.push({ src: url, caption: item.caption || '' });
-    div.innerHTML = `<img src="${url}" alt="${item.caption || ''}" loading="lazy">
+    div.innerHTML = `<img src="${url}" alt="${item.caption || cat.name}" loading="lazy">
       ${item.caption ? `<div class="caption">${item.caption}</div>` : ''}`;
-    div.addEventListener('click', () => openLightbox(allImgs, i));
-    container.appendChild(div);
+    div.addEventListener('click', () => openLightbox(currentImgs, i));
+    cvMasonry.appendChild(div);
   });
-}
-Object.entries(galleries).forEach(([id, items]) => buildGallery(id, items));
 
-// ── CONTACT FORM (Formspree) ───────────────────────────────────────────────
+  cvView.classList.add('active');
+  cvView.scrollTop = 0;
+  document.body.classList.add('no-scroll');
+  history.pushState({ cat: id }, '', '#' + id);
+}
+
+function closeCategory() {
+  cvView.classList.remove('active');
+  document.body.classList.remove('no-scroll');
+  if (location.hash && location.hash !== '#portfolio') {
+    history.pushState({}, '', '#portfolio');
+  }
+  document.getElementById('portfolio').scrollIntoView();
+}
+
+/* support browser back button + deep links */
+window.addEventListener('popstate', () => {
+  const id = location.hash.replace('#', '');
+  if (categories.find(c => c.id === id)) openCategory(id);
+  else { cvView.classList.remove('active'); document.body.classList.remove('no-scroll'); }
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const id = location.hash.replace('#', '');
+  if (categories.find(c => c.id === id)) openCategory(id);
+});
+
+/* ── CONTACT FORM (Formspree) ────────────────────────── */
 const form = document.getElementById('contactForm');
 form.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = form.querySelector('button');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
+  btn.textContent = 'Sending…'; btn.disabled = true;
   try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
-    if (res.ok) {
-      form.reset();
-      document.getElementById('formSuccess').style.display = 'block';
-      btn.style.display = 'none';
-    } else {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  } catch {
-    btn.textContent = 'Try Again';
-    btn.disabled = false;
-  }
+    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+    if (res.ok) { form.reset(); document.getElementById('formSuccess').style.display = 'block'; btn.style.display = 'none'; }
+    else { btn.textContent = 'Try Again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Try Again'; btn.disabled = false; }
 });
 
-// ── LIGHTBOX ──────────────────────────────────────────────────────────────
+/* ── LIGHTBOX ────────────────────────────────────────── */
 let lbImages = [], lbIndex = 0;
 function openLightbox(images, index) {
-  lbImages = images; lbIndex = index;
-  showLbImage();
+  lbImages = images; lbIndex = index; showLbImage();
   document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('no-scroll');
 }
 function showLbImage() {
   document.getElementById('lb-img').src = lbImages[lbIndex].src;
   document.getElementById('lb-caption').textContent = lbImages[lbIndex].caption || '';
+  document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + lbImages.length;
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
+  if (!cvView.classList.contains('active')) document.body.classList.remove('no-scroll');
 }
-function lbNav(dir) {
-  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-  showLbImage();
-}
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
+function lbNav(dir) { lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length; showLbImage(); }
+document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (!document.getElementById('lightbox').classList.contains('active')) {
+    if (e.key === 'Escape' && cvView.classList.contains('active')) closeCategory();
+    return;
+  }
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowRight') lbNav(1);
   if (e.key === 'ArrowLeft') lbNav(-1);
